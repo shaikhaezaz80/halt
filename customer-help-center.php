@@ -119,6 +119,8 @@ final class Customer_Help_Center {
 	private function includes() {
 		global $chc_options;
 
+		require_once CHC_PLUGIN_DIR . 'includes/mime-types.php';
+
 		if( is_admin() ) {
 			// require_once CHC_PLUGIN_DIR . 'includes/admin/welcome.php';
 		}
@@ -149,7 +151,7 @@ final class Customer_Help_Center {
 			// Look in global /wp-content/languages/chc folder
 			load_textdomain( 'chc', $mofile_global );
 		} elseif ( file_exists( $mofile_local ) ) {
-			// Look in local /wp-content/plugins/easy-digital-downloads/languages/ folder
+			// Look in local /wp-content/plugins/customer-help-center/languages/ folder
 			load_textdomain( 'chc', $mofile_local );
 		} else {
 			// Load the default language files

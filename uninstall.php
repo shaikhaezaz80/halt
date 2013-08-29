@@ -12,5 +12,8 @@
 // Exit if accessed directly
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) exit;
 
-// Load EDD file
-include_once( 'help-center.php' );
+// Load CHC file
+include_once( 'customer-help-center.php' );
+
+/** Delete all the Plugin Options */
+delete_option( 'chc_settings_general' );

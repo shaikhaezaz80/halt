@@ -124,7 +124,7 @@ class CHC_Welcome {
 
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to Customer Help Center %s', 'chc' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! Customer Help Center %s is ready to make your online store faster, safer and better!', 'chc' ), $display_version ); ?></div>
+			<div class="about-text"><?php printf( __( 'Thank you for using Customer Help Center %s it\'s ready to help your customers in a better way!', 'chc' ), $display_version ); ?></div>
 			<div class="chc-badge"><?php printf( __( 'Version %s', 'chc' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
@@ -134,6 +134,23 @@ class CHC_Welcome {
 					<?php _e( 'Credits', 'chc' ); ?>
 				</a>
 			</h2>
+
+			<div class="changelog">
+				<h3><?php _e( 'Easy Peasy', 'chc' );?></h3>
+
+				<div class="feature-section">
+					<h4><?php _e( 'Prettier, More Versatile Styles', 'chc' );?></h4>
+					<p><?php _e( 'We have completely rewritten the checkout CSS to make it more attractive, more flexible, and more compatible with a wider variety of themes.', 'chc' );?></p>
+
+					<h4><?php _e( 'Better Checkout Layout', 'chc' );?></h4>
+					<p><?php _e( 'The position of each field on the checkout has been carefully reconsidered to ensure it is in the proper location so as to best create high conversion rates.', 'chc' );?></p>
+				</div>
+			</div>
+
+			<div class="return-to-dashboard">
+				<a href="#">Go to Settings</a>
+			</div>
+
 		</div>
 
 		<?php
@@ -151,7 +168,7 @@ class CHC_Welcome {
 		?>
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to Customer Help Center %s', 'chc' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! Customer Help Center %s is ready to make your online store faster, safer and better!', 'chc' ), $display_version ); ?></div>
+			<div class="about-text"><?php printf( __( 'Thank you for using Customer Help Center %s it\'s ready to help your customers in a better way!', 'chc' ), $display_version ); ?></div>
 			<div class="chc-badge"><?php printf( __( 'Version %s', 'chc' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
@@ -163,8 +180,6 @@ class CHC_Welcome {
 			</h2>
 
 			<p class="about-description"><?php _e( 'Customer Help Center is created by a worldwide team of developers who aim to provide the #1 eCommerce platform for selling digital goods through WordPress.', 'chc' ); ?></p>
-
-			<?php echo $this->contributors(); ?>
 		</div>
 		<?php
 	}

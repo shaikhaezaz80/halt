@@ -119,10 +119,20 @@ final class Customer_Help_Center {
 	private function includes() {
 		global $chc_options;
 
+		require_once CHC_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
+		$chc_options = chc_get_settings();
+
 		require_once CHC_PLUGIN_DIR . 'includes/mime-types.php';
 
 		if( is_admin() ) {
-			// require_once CHC_PLUGIN_DIR . 'includes/admin/welcome.php';
+			require_once CHC_PLUGIN_DIR . 'includes/admin/welcome.php';
+			require_once CHC_PLUGIN_DIR . 'includes/custom-post-types.php';
+			
+			require_once CHC_PLUGIN_DIR . 'includes/admin/admin-pages.php';
+			require_once CHC_PLUGIN_DIR . 'includes/admin/settings/settings.php';
+
+		} else {
+			// Front-end includes
 		}
 
 	}

@@ -75,8 +75,8 @@ class CHC_Welcome {
 	 * @return void
 	 */
 	public function admin_head() {
-		// remove_submenu_page( 'index.php', 'chc-about' );
-		// remove_submenu_page( 'index.php', 'chc-credits' );
+		remove_submenu_page( 'index.php', 'chc-about' );
+		remove_submenu_page( 'index.php', 'chc-credits' );
 
 		// Badge for welcome page
 		$badge_url = CHC_PLUGIN_URL . 'assets/images/chc-badge.png';

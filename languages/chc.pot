@@ -1,0 +1,318 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Customer Help Center 1.0\n"
+"POT-Creation-Date: 2013-09-10 10:28+0530\n"
+"PO-Revision-Date: 2013-09-10 10:28+0530\n"
+"Last-Translator: Ram Ratan Maurya <support@codestag.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;"
+"_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;"
+"esc_html_x;_c;_nc()\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../customer-help-center.php:83 ../customer-help-center.php:95
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: ../includes/custom-post-types.php:14
+msgid "Add New"
+msgstr ""
+
+#: ../includes/custom-post-types.php:15
+#, php-format
+msgid "Add New %1$s"
+msgstr ""
+
+#: ../includes/custom-post-types.php:16
+#, php-format
+msgid "Edit %1$s"
+msgstr ""
+
+#: ../includes/custom-post-types.php:17
+#, php-format
+msgid "New %1$s"
+msgstr ""
+
+#: ../includes/custom-post-types.php:18
+#, php-format
+msgid "All %2$s"
+msgstr ""
+
+#: ../includes/custom-post-types.php:19
+#, php-format
+msgid "View %1$s"
+msgstr ""
+
+#: ../includes/custom-post-types.php:20
+#, php-format
+msgid "Search %2$s"
+msgstr ""
+
+#: ../includes/custom-post-types.php:21
+#, php-format
+msgid "No %2$s found"
+msgstr ""
+
+#: ../includes/custom-post-types.php:22
+#, php-format
+msgid "No %2$s found in Trash"
+msgstr ""
+
+#: ../includes/custom-post-types.php:24
+#, php-format
+msgid "%2$s"
+msgstr ""
+
+#: ../includes/custom-post-types.php:53
+msgid "KB Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:54
+msgid "KB Categories"
+msgstr ""
+
+#: ../includes/custom-post-types.php:55
+msgid "Search KB Categories"
+msgstr ""
+
+#: ../includes/custom-post-types.php:56
+msgid "All KB Categories"
+msgstr ""
+
+#: ../includes/custom-post-types.php:57
+msgid "Parent KB Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:58
+msgid "Parent KB Category:"
+msgstr ""
+
+#: ../includes/custom-post-types.php:59
+msgid "Edit KB Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:60
+msgid "Update KB Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:61
+msgid "Add New KB Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:62
+msgid "New KB Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:75
+msgid "KB Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:76
+msgid "KB Tags"
+msgstr ""
+
+#: ../includes/custom-post-types.php:77
+msgid "Search KB Tags"
+msgstr ""
+
+#: ../includes/custom-post-types.php:78
+msgid "All KB Tags"
+msgstr ""
+
+#: ../includes/custom-post-types.php:79
+msgid "Parent KB Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:80
+msgid "Parent KB Tag:"
+msgstr ""
+
+#: ../includes/custom-post-types.php:81
+msgid "Edit KB Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:82
+msgid "Update KB Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:83
+msgid "Add New KB Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:84
+msgid "New KB Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:107
+#: ../includes/admin/settings/settings.php:35
+msgid "Knowledgebase"
+msgstr ""
+
+#: ../includes/custom-post-types.php:108
+msgid "Knowledgebases"
+msgstr ""
+
+#: ../includes/admin/admin-pages.php:20
+msgid "Custom Help Center Settins"
+msgstr ""
+
+#: ../includes/admin/admin-pages.php:20
+msgid "Help Center"
+msgstr ""
+
+#: ../includes/admin/admin-pages.php:21
+msgid "Customer Help Center System Info"
+msgstr ""
+
+#: ../includes/admin/admin-pages.php:21
+msgid "System Info"
+msgstr ""
+
+#: ../includes/admin/dashboard-widgets.php:23
+msgid "Customer Help Center Right now"
+msgstr ""
+
+#: ../includes/admin/dashboard-widgets.php:39
+msgid "Help Center Stats"
+msgstr ""
+
+#: ../includes/admin/dashboard-widgets.php:44
+msgid "Knowledgebase Article"
+msgstr ""
+
+#: ../includes/admin/dashboard-widgets.php:56
+msgid "Knowledgebase Category"
+msgstr ""
+
+#: ../includes/admin/dashboard-widgets.php:69
+msgid "Knowledgebase Tag"
+msgstr ""
+
+#: ../includes/admin/welcome.php:53 ../includes/admin/welcome.php:54
+#: ../includes/admin/welcome.php:62 ../includes/admin/welcome.php:63
+msgid "Welcome to Customer Help Center"
+msgstr ""
+
+#: ../includes/admin/welcome.php:126 ../includes/admin/welcome.php:170
+#, php-format
+msgid "Welcome to Customer Help Center %s"
+msgstr ""
+
+#: ../includes/admin/welcome.php:127 ../includes/admin/welcome.php:171
+#, php-format
+msgid ""
+"Thank you for using Customer Help Center %s it's ready to help your "
+"customers in a better way!"
+msgstr ""
+
+#: ../includes/admin/welcome.php:128 ../includes/admin/welcome.php:172
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: ../includes/admin/welcome.php:132 ../includes/admin/welcome.php:176
+msgid "What's New"
+msgstr ""
+
+#: ../includes/admin/welcome.php:134 ../includes/admin/welcome.php:178
+msgid "Credits"
+msgstr ""
+
+#: ../includes/admin/welcome.php:139
+msgid "Easy Peasy"
+msgstr ""
+
+#: ../includes/admin/welcome.php:142
+msgid "Prettier, More Versatile Styles"
+msgstr ""
+
+#: ../includes/admin/welcome.php:143
+msgid ""
+"We have completely rewritten the checkout CSS to make it more attractive, "
+"more flexible, and more compatible with a wider variety of themes."
+msgstr ""
+
+#: ../includes/admin/welcome.php:145
+msgid "Better Checkout Layout"
+msgstr ""
+
+#: ../includes/admin/welcome.php:146
+msgid ""
+"The position of each field on the checkout has been carefully reconsidered "
+"to ensure it is in the proper location so as to best create high conversion "
+"rates."
+msgstr ""
+
+#: ../includes/admin/welcome.php:182
+msgid ""
+"Customer Help Center is created by a worldwide team of developers who aim to "
+"provide the #1 eCommerce platform for selling digital goods through "
+"WordPress."
+msgstr ""
+
+#: ../includes/admin/settings/contextual-help.php:26
+msgid "For more information:"
+msgstr ""
+
+#: ../includes/admin/settings/contextual-help.php:27
+#, php-format
+msgid ""
+"Visit the <a href=\"%s\">documentation</a> on the Easy Digital Downloads "
+"website."
+msgstr ""
+
+#: ../includes/admin/settings/contextual-help.php:29
+#, php-format
+msgid ""
+"<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>. View <a href="
+"\"%s\">extensions</a> or <a href=\"%s\">themes</a>."
+msgstr ""
+
+#: ../includes/admin/settings/contextual-help.php:39
+#: ../includes/admin/settings/settings.php:34
+msgid "General"
+msgstr ""
+
+#: ../includes/admin/settings/contextual-help.php:40
+msgid ""
+"This screen provides the most basic settings for configuring customer help "
+"center."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:45
+msgid "Knowledgebase Slug"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:46
+msgid "Enter the slug for knowledebase e.g. knowledgebase or article"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:65
+msgid "General Settings"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:91
+msgid "Knowledgebase Settings"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:275
+#, php-format
+msgid ""
+"The callback function used for the <strong>%s</strong> setting is missing."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:359
+msgid "Upload File"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:418
+msgid "Settings Updated"
+msgstr ""

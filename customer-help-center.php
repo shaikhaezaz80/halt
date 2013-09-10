@@ -47,12 +47,23 @@ final class Customer_Help_Center {
 	 */
 	private static $instance;
 
+	public function __construct() {
+		// Auto-load classes on demand
+		if ( function_exists( "__autoload" ) ) {
+			spl_autoload_register( "__autoload" );
+    	}
+		spl_autoload_register( array( $this, 'autoload' ) );
+		
+		add_action( 'init', array( $this, 'init' ), 0 );
+	}
+
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Customer_Help_Center ) ) {
 			self::$instance = new Customer_Help_Center;
 			self::$instance->setup_constants();
 			self::$instance->includes();
 			self::$instance->load_textdomain();
+
 		}
 		return self::$instance;
 	}
@@ -85,6 +96,46 @@ final class Customer_Help_Center {
 	}
 
 	/**
+	 * Init CHC when WordPress Initialises.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function init() {
+
+		if ( ! is_admin() || defined('DOING_AJAX') ) {
+			$this->shortcodes = new CHC_Shortcodes();			// Shortcodes class, controls all frontend shortcodes
+
+			add_filter( 'template_include', array( $this, 'template_loader' ) );
+			add_filter( 'body_class', array( $this, 'body_class' ) );
+
+			// Init action
+			do_action( 'chc_init' );
+		}
+	}
+
+	/**
+	 * Auto-load CHC classes on demand to reduce memory consumption.
+	 *
+	 * @access public
+	 * @param mixed $class
+	 * @return void
+	 */
+	public function autoload( $class ) {
+		$class = strtolower( $class );
+
+		if( strpos( $class, 'chc_shortcode_' ) === 0 ) {
+			$path = CHC_PLUGIN_DIR . 'includes/shortcodes/';
+			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
+			
+			if ( is_readable( $path . $file ) ) {
+				include_once( $path . $file );
+				return;
+			}
+		}
+	}
+
+	/**
 	 * Setup plugin constants
 	 *
 	 * @access private
@@ -107,6 +158,10 @@ final class Customer_Help_Center {
 		// Plugin Root File
 		if ( ! defined( 'CHC_PLUGIN_FILE' ) )
 			define( 'CHC_PLUGIN_FILE', __FILE__ );
+
+		// CHC TEMPLATES URL
+		if ( ! defined( 'TEMPLATE_URL' ) )
+			define( 'TEMPLATE_URL', apply_filters( 'chc_template_url', 'chc/' ) );
 	}
 
 	/**
@@ -122,17 +177,23 @@ final class Customer_Help_Center {
 		require_once CHC_PLUGIN_DIR . 'includes/admin/settings/register-settings.php';
 		$chc_options = chc_get_settings();
 
+		// Both Admin and Frontend includes
 		require_once CHC_PLUGIN_DIR . 'includes/mime-types.php';
+		require_once CHC_PLUGIN_DIR . 'includes/scripts.php';
+		require_once CHC_PLUGIN_DIR . 'includes/custom-post-types.php';
+		require_once CHC_PLUGIN_DIR . 'includes/template-functions.php';
+		require_once CHC_PLUGIN_DIR . 'includes/ajax-functions.php';
 
 		if( is_admin() ) {
+			// Admin includes
 			require_once CHC_PLUGIN_DIR . 'includes/admin/welcome.php';
-			require_once CHC_PLUGIN_DIR . 'includes/custom-post-types.php';
-			
 			require_once CHC_PLUGIN_DIR . 'includes/admin/admin-pages.php';
+			require_once CHC_PLUGIN_DIR . 'includes/admin/dashboard-widgets.php';
 			require_once CHC_PLUGIN_DIR . 'includes/admin/settings/settings.php';
-
+			require_once CHC_PLUGIN_DIR . 'includes/admin/settings/contextual-help.php';
 		} else {
 			// Front-end includes
+			require_once CHC_PLUGIN_DIR . 'includes/class-chc-shortcodes.php';
 		}
 
 	}
@@ -168,6 +229,94 @@ final class Customer_Help_Center {
 			load_plugin_textdomain( 'chc', false, $chc_lang_dir );
 		}
 	}
+
+	/**
+	 * Shortcode Wrapper
+	 *
+	 * @access public
+	 * @param mixed $function
+	 * @param array $atts (default: array())
+	 * @return string
+	 */
+	public function shortcode_wrapper(
+		$function,
+		$atts = array(),
+		$wrapper = array(
+			'class' => 'chc',
+			'before' => null,
+			'after' => null
+		)
+	){
+		ob_start();
+
+		$before 	= empty( $wrapper['before'] ) ? '<div class="' . $wrapper['class'] . '">' : $wrapper['before'];
+		$after 		= empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
+
+		echo $before;
+		call_user_func( $function, $atts );
+		echo $after;
+
+		return ob_get_clean();
+	}
+
+	/**
+	 * Load a template.
+	 *
+	 * Handles template usage so that we can use our own templates instead of the themes.
+	 *
+	 * Templates are in the 'templates' folder. chc looks for theme
+	 * overrides in /theme/chc/ by default
+	 *
+	 * For beginners, it also looks for a chc.php template first. If the user adds
+	 * this to the theme (containing a chc() inside) this will be used for all
+	 * chc templates.
+	 *
+	 * @access public
+	 * @param mixed $template
+	 * @return string
+	 */
+	public function template_loader( $template ) {
+		$find = array( 'customer-helper-center.php' );
+		$file = '';
+
+		if ( is_single() && get_post_type() == 'knowledgebase' ) {
+
+
+			$file 	= 'single-knowledgebase.php';
+			$find[] = $file;
+			$find[] = TEMPLATE_URL . $file;
+
+		} elseif ( is_tax( 'knowledgebase_category' ) || is_tax( 'knowledgebase_tags' ) ) {
+
+			$term = get_queried_object();
+			$file 		= 'taxonomy-' . $term->taxonomy . '.php';
+			$find[] 	= 'taxonomy-' . $term->taxonomy . '-' . $term->slug . '.php';
+			$find[] 	= TEMPLATE_URL . 'taxonomy-' . $term->taxonomy . '-' . $term->slug . '.php';
+			$find[] 	= $file;
+			$find[] 	= TEMPLATE_URL . $file;
+
+		} elseif ( is_post_type_archive( 'knowledgebase' ) ) {
+
+			$file 	= 'archive-knowledgebase.php';
+			$find[] = $file;
+			$find[] = TEMPLATE_URL . $file;
+
+		}
+
+		if( $file ) {
+			$template = locate_template( $find );
+			if ( ! $template ) $template = CHC_PLUGIN_DIR . 'templates/' . $file;
+		}
+
+		return $template;
+	}
+
+	public function body_class( $classes ) {
+		
+		$classes[] = 'chc';
+
+		return $classes;
+	}
 }
 
 endif; // End if class_exists check
@@ -188,6 +337,9 @@ endif; // End if class_exists check
 function CHC(){
 	return Customer_Help_Center::instance();
 }
+
+global $chc;
+$chc = CHC();
 
 // Get CHC Running
 CHC();

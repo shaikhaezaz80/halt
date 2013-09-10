@@ -36,14 +36,6 @@ function chc_register_settings() {
 	$chc_settings = array(
 		'general' => apply_filters( 'chc_settings_general',
 			array(
-				'kb' => array(
-					'id' => 'kb',
-					'name' => __( 'Knowledgebase Slug', 'chc' ),
-					'desc' => __( 'Enter the slug for knowledebase e.g. knowledgebase or article', 'chc' ),
-					'type' => 'text',
-					'size' => 'regular',
-					'std' => 'kbs'
-				),
 			)
 		),
 		'knowledgebase' => apply_filters( 'chc_settings_knowledgebase',

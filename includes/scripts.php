@@ -89,7 +89,7 @@ function chc_load_scripts() {
 		'permalink'        => ( get_option( 'permalink_structure' ) ) ? 1 : 0,
 	));
 }
-add_action( 'wp_enqueue_scripts', 'chc_load_scripts' );
+// add_action( 'wp_enqueue_scripts', 'chc_load_scripts' );
 	
 /**
  * Adds CHC Version to the <head> tag

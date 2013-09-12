@@ -1,19 +1,19 @@
 <?php
 /**
- * Uninstall Customer Help Center
+ * Uninstall Halt
  *
- * @package     CHC
+ * @package     Halt
  * @subpackage  Uninstall
- * @copyright   Copyright (c) 2013, Ram Ratan Maurya
+ * @author 		Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       1.4.3
+ * @since       1.0
  */
 
 // Exit if accessed directly
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) exit;
 
-// Load CHC file
-include_once( 'customer-help-center.php' );
+// Load Halt file
+include_once( 'halt.php' );
 
 /** Delete all the Plugin Options */
-delete_option( 'chc_settings_general' );
+delete_option( 'halt_settings_general' );

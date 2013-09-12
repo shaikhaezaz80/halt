@@ -1,31 +1,31 @@
 <?php
 
-if( ! function_exists('chc_post_types_init') ) :
+if( ! function_exists('halt_post_types_init') ) :
 
-function chc_post_types_init() {
+function halt_post_types_init() {
 	
-	$archives = defined( 'CHC_KB_DISABLE_ARCHIVE' ) && CHC_KB_DISABLE_ARCHIVE ? false : true;
-	$slug     = defined( 'CHC_KB_SLUG' ) ? CHC_KB_SLUG : 'knowledgebase';
-	$rewrite  = defined( 'CHC_KB_DISABLE_REWRITE' ) && CHC_KB_DISABLE_REWRITE ? false : array('slug' => $slug, 'with_front' => false);
+	$archives = defined( 'HALT_KB_DISABLE_ARCHIVE' ) && HALT_KB_DISABLE_ARCHIVE ? false : true;
+	$slug     = defined( 'HALT_KB_SLUG' ) ? HALT_KB_SLUG : 'knowledgebase';
+	$rewrite  = defined( 'HALT_KB_DISABLE_REWRITE' ) && HALT_KB_DISABLE_REWRITE ? false : array('slug' => $slug, 'with_front' => false);
 
-	$knowledgebase_labels =  apply_filters( 'chc_knowledgebase_labels', array(
+	$knowledgebase_labels =  apply_filters( 'halt_knowledgebase_labels', array(
 		'name' 				=> '%2$s',
 		'singular_name' 	=> '%1$s',
-		'add_new' 			=> __( 'Add New', 'chc' ),
-		'add_new_item' 		=> __( 'Add New %1$s', 'chc' ),
-		'edit_item' 		=> __( 'Edit %1$s', 'chc' ),
-		'new_item' 			=> __( 'New %1$s', 'chc' ),
-		'all_items' 		=> __( 'All %2$s', 'chc' ),
-		'view_item' 		=> __( 'View %1$s', 'chc' ),
-		'search_items' 		=> __( 'Search %2$s', 'chc' ),
-		'not_found' 		=> __( 'No %2$s found', 'chc' ),
-		'not_found_in_trash'=> __( 'No %2$s found in Trash', 'chc' ),
+		'add_new' 			=> __( 'Add New', 'halt' ),
+		'add_new_item' 		=> __( 'Add New %1$s', 'halt' ),
+		'edit_item' 		=> __( 'Edit %1$s', 'halt' ),
+		'new_item' 			=> __( 'New %1$s', 'halt' ),
+		'all_items' 		=> __( 'All %2$s', 'halt' ),
+		'view_item' 		=> __( 'View %1$s', 'halt' ),
+		'search_items' 		=> __( 'Search %2$s', 'halt' ),
+		'not_found' 		=> __( 'No %2$s found', 'halt' ),
+		'not_found_in_trash'=> __( 'No %2$s found in Trash', 'halt' ),
 		'parent_item_colon' => '',
-		'menu_name' 		=> __( '%2$s', 'chc' )
+		'menu_name' 		=> __( '%2$s', 'halt' )
 	) );
 
 	foreach ( $knowledgebase_labels as $key => $value ) {
-	   $knowledgebase_labels[ $key ] = sprintf( $value, chc_get_label_singular(), chc_get_label_plural() );
+	   $knowledgebase_labels[ $key ] = sprintf( $value, halt_get_label_singular(), halt_get_label_plural() );
 	}
 
 	$knowledgebase_args = array(
@@ -40,26 +40,26 @@ function chc_post_types_init() {
 		'map_meta_cap'      => true,
 		'has_archive' 		=> $archives,
 		'hierarchical' 		=> false,
-		'supports' 			=> apply_filters( 'chc_knowledgebase_supports', array( 'title', 'editor', 'thumbnail' ) ),
+		'supports' 			=> apply_filters( 'halt_knowledgebase_supports', array( 'title', 'editor', 'thumbnail' ) ),
 	);
 
-	register_post_type( 'knowledgebase', apply_filters( 'chc_knowledgebase_post_type_args', $knowledgebase_args ) );
+	register_post_type( 'knowledgebase', apply_filters( 'halt_knowledgebase_post_type_args', $knowledgebase_args ) );
 
 	register_taxonomy( 'knowledgebase_category',
 	    array('knowledgebase'),
 	    array(
 	        'hierarchical' => true,
 	        'labels' => array(
-	                'name' => __( 'KB Category', 'chc'),
-	                'singular_name' => __( 'KB Categories', 'chc'),
-	                'search_items' =>  __( 'Search KB Categories', 'chc'),
-	                'all_items' => __( 'All KB Categories', 'chc'),
-	                'parent_item' => __( 'Parent KB Category', 'chc'),
-	                'parent_item_colon' => __( 'Parent KB Category:', 'chc'),
-	                'edit_item' => __( 'Edit KB Category', 'chc'),
-	                'update_item' => __( 'Update KB Category', 'chc'),
-	                'add_new_item' => __( 'Add New KB Category', 'chc'),
-	                'new_item_name' => __( 'New KB Category', 'chc')
+	                'name' => __( 'KB Category', 'halt'),
+	                'singular_name' => __( 'KB Categories', 'halt'),
+	                'search_items' =>  __( 'Search KB Categories', 'halt'),
+	                'all_items' => __( 'All KB Categories', 'halt'),
+	                'parent_item' => __( 'Parent KB Category', 'halt'),
+	                'parent_item_colon' => __( 'Parent KB Category:', 'halt'),
+	                'edit_item' => __( 'Edit KB Category', 'halt'),
+	                'update_item' => __( 'Update KB Category', 'halt'),
+	                'add_new_item' => __( 'Add New KB Category', 'halt'),
+	                'new_item_name' => __( 'New KB Category', 'halt')
 	        ),
 	        'show_ui' => true,
 	        'query_var' => true,
@@ -72,16 +72,16 @@ function chc_post_types_init() {
 	    array(
 	        'hierarchical' => false,
 	        'labels' => array(
-	                'name' => __( 'KB Tag', 'chc'),
-	                'singular_name' => __( 'KB Tags', 'chc'),
-	                'search_items' =>  __( 'Search KB Tags', 'chc'),
-	                'all_items' => __( 'All KB Tags', 'chc'),
-	                'parent_item' => __( 'Parent KB Tag', 'chc'),
-	                'parent_item_colon' => __( 'Parent KB Tag:', 'chc'),
-	                'edit_item' => __( 'Edit KB Tag', 'chc'),
-	                'update_item' => __( 'Update KB Tag', 'chc'),
-	                'add_new_item' => __( 'Add New KB Tag', 'chc'),
-	                'new_item_name' => __( 'New KB Tag', 'chc')
+	                'name' => __( 'KB Tag', 'halt'),
+	                'singular_name' => __( 'KB Tags', 'halt'),
+	                'search_items' =>  __( 'Search KB Tags', 'halt'),
+	                'all_items' => __( 'All KB Tags', 'halt'),
+	                'parent_item' => __( 'Parent KB Tag', 'halt'),
+	                'parent_item_colon' => __( 'Parent KB Tag:', 'halt'),
+	                'edit_item' => __( 'Edit KB Tag', 'halt'),
+	                'update_item' => __( 'Update KB Tag', 'halt'),
+	                'add_new_item' => __( 'Add New KB Tag', 'halt'),
+	                'new_item_name' => __( 'New KB Tag', 'halt')
 	        ),
 	        'show_ui' => true,
 	        'query_var' => true,
@@ -93,7 +93,7 @@ function chc_post_types_init() {
 
 endif;
 
-add_action( 'init', 'chc_post_types_init', 1 );
+add_action( 'init', 'halt_post_types_init', 1 );
 
 
 /**
@@ -102,32 +102,32 @@ add_action( 'init', 'chc_post_types_init', 1 );
  * @since 1.0
  * @return array $defaults Default labels
  */
-function chc_get_default_knowledgebase_labels() {
+function halt_get_default_knowledgebase_labels() {
 	$defaults = array(
-	   'singular' => __( 'Knowledgebase', 'chc' ),
-	   'plural' => __( 'Knowledgebases', 'chc')
+	   'singular' => __( 'Knowledgebase', 'halt' ),
+	   'plural' => __( 'Knowledgebases', 'halt')
 	);
-	return apply_filters( 'chc_default_knowledgebase_name', $defaults );
+	return apply_filters( 'halt_default_knowledgebase_name', $defaults );
 }
 
 /**
  * Get Singular Label
  *
- * @since 1.0.8.3
+ * @since 1.0
  * @return string $defaults['singular'] Singular label
  */
-function chc_get_label_singular( $lowercase = false ) {
-	$defaults = chc_get_default_knowledgebase_labels();
+function halt_get_label_singular( $lowercase = false ) {
+	$defaults = halt_get_default_knowledgebase_labels();
 	return ($lowercase) ? strtolower( $defaults['singular'] ) : $defaults['singular'];
 }
 
 /**
  * Get Plural Label
  *
- * @since 1.0.8.3
+ * @since 1.0
  * @return string $defaults['plural'] Plural label
  */
-function chc_get_label_plural( $lowercase = false ) {
-	$defaults = chc_get_default_knowledgebase_labels();
+function halt_get_label_plural( $lowercase = false ) {
+	$defaults = halt_get_default_knowledgebase_labels();
 	return ( $lowercase ) ? strtolower( $defaults['plural'] ) : $defaults['plural'];
 }

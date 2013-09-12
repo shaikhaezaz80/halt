@@ -2,9 +2,9 @@
 /**
  * Mime Types
  *
- * @package     CHC
+ * @package     Halt
  * @subpackage  Functions
- * @copyright   Copyright (c) 2013, Ram Ratan Maurya
+ * @author 		Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @param array $$existing_mimes A list of all the existing MIME types
  * @return array $$existing_mimes A list of all the new MIME types appended
  */
-function chc_allowed_mime_types( $existing_mimes ) {
+function halt_allowed_mime_types( $existing_mimes ) {
 	$existing_mimes['zip']  = 'application/zip';
 	$existing_mimes['psd']  = 'image/photoshop';
 
 	return $existing_mimes;
 }
-add_filter( 'upload_mimes', 'chc_allowed_mime_types' );
+add_filter( 'upload_mimes', 'halt_allowed_mime_types' );

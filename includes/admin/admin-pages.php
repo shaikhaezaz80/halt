@@ -2,7 +2,7 @@
 /**
  * Admin Pages
  *
- * @package     CHC
+ * @package     Halt
  * @subpackage  Admin/Pages
  * @copyright   Copyright (c) 2013, Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -12,13 +12,13 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-function chc_add_options_link() {
-	global $chc_settings_page, $chc_system_info;
+function halt_add_options_link() {
+	global $halt_settings_page, $halt_system_info;
 
 	require_once 'system-info.php';
 
-	$chc_settings_page = add_menu_page( __( 'Custom Help Center Settins', 'chc' ), __( 'Help Center', 'chc' ), 'install_plugins', 'chc-settings', 'chc_options_page' );
-	$chc_system_info = add_submenu_page( 'chc-settings', __( 'Customer Help Center System Info', 'chc' ), __( 'System Info', 'chc' ), 'install_plugins', 'chc-system-info', 'chc_system_info' );
+	$halt_settings_page = add_menu_page( __( 'Halt Settins', 'halt' ), __( 'Halt', 'halt' ), 'install_plugins', 'halt-settings', 'halt_options_page' );
+	$halt_system_info = add_submenu_page( 'halt-settings', __( 'Halt System Info', 'halt' ), __( 'System Info', 'halt' ), 'install_plugins', 'halt-system-info', 'halt_system_info' );
 }
 
-add_action( 'admin_menu', 'chc_add_options_link', 9 );
+add_action( 'admin_menu', 'halt_add_options_link', 9 );

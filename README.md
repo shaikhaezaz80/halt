@@ -1,12 +1,10 @@
-Help Center
+Halt
 ===========
 
 **Customer Self Service Help Centre** built on the top of WordPress.
 
 ### Features
 
-Built for speed, powered by Backbone.js with the help of [JSON-API](http://wordpress.org/plugins/json-api/) plugin
-WPML Compatible
 
 Plugin Features ( frontend ) :
 - Knowledgebase

@@ -4,9 +4,9 @@
  *
  * Process the front-end AJAX actions.
  *
- * @package     CHC
+ * @package     Halt
  * @subpackage  Functions/AJAX
- * @copyright   Copyright (c) 2013, Ram Ratan Maurya
+ * @author 		Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */

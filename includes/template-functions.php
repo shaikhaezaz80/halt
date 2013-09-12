@@ -1,12 +1,12 @@
 <?php
 /**
- * CHC Core Functions
+ * Halt Core Functions
  *
  * Functions available on both the front-end and admin.
  *
  * @author 		Ram Ratan Maurya
  * @category 	Core
- * @package 	CHC/Functions
+ * @package 	Halt/Functions
  * @version     1.0
  */
 
@@ -20,19 +20,19 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @param string $name (default: '')
  * @return void
  */
-function chc_get_template_part( $slug, $name = '' ) {
+function halt_get_template_part( $slug, $name = '' ) {
 
 	$template = '';
 
-	// Look in yourtheme/slug-name.php and yourtheme/chc/slug-name.php
+	// Look in yourtheme/slug-name.php and yourtheme/halt/slug-name.php
 	if ( $name )
 		$template = locate_template( array ( "{$slug}-{$name}.php", "{TEMPLATE_URL}{$slug}-{$name}.php" ) );
 
 	// Get default slug-name.php
-	if ( !$template && $name && file_exists( CHC_PLUGIN_DIR . "/templates/{$slug}-{$name}.php" ) )
-		$template = CHC_PLUGIN_DIR . "/templates/{$slug}-{$name}.php";
+	if ( !$template && $name && file_exists( HALT_PLUGIN_DIR . "/templates/{$slug}-{$name}.php" ) )
+		$template = HALT_PLUGIN_DIR . "/templates/{$slug}-{$name}.php";
 
-	// If template file doesn't exist, look in yourtheme/slug.php and yourtheme/chc/slug.php
+	// If template file doesn't exist, look in yourtheme/slug.php and yourtheme/halt/slug.php
 	if ( !$template )
 		$template = locate_template( array ( "{$slug}.php", "{TEMPLATE_URL}{$slug}.php" ) );
 
@@ -50,17 +50,17 @@ function chc_get_template_part( $slug, $name = '' ) {
  * @param string $default_path (default: '')
  * @return void
  */
-function chc_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+function halt_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 	if ( $args && is_array($args) )
 		extract( $args );
 
-	$located = chc_locate_template( $template_name, $template_path, $default_path );
+	$located = halt_locate_template( $template_name, $template_path, $default_path );
 
-	do_action( 'chc_before_template_part', $template_name, $template_path, $located, $args );
+	do_action( 'halt_before_template_part', $template_name, $template_path, $located, $args );
 
 	include( $located );
 
-	do_action( 'chc_after_template_part', $template_name, $template_path, $located, $args );
+	do_action( 'halt_after_template_part', $template_name, $template_path, $located, $args );
 }
 
 /**
@@ -78,10 +78,10 @@ function chc_get_template( $template_name, $args = array(), $template_path = '',
  * @param string $default_path (default: '')
  * @return string
  */
-function chc_locate_template( $template_name, $template_path = '', $default_path = '' ) {
+function halt_locate_template( $template_name, $template_path = '', $default_path = '' ) {
 
 	if ( ! $template_path ) $template_path = TEMPLATE_URL;
-	if ( ! $default_path ) $default_path = CHC_PLUGIN_DIR . '/templates/';
+	if ( ! $default_path ) $default_path = HALT_PLUGIN_DIR . '/templates/';
 
 	// Look within passed path within the theme - this is priority
 	$template = locate_template(
@@ -96,5 +96,5 @@ function chc_locate_template( $template_name, $template_path = '', $default_path
 		$template = $default_path . $template_name;
 
 	// Return what we found
-	return apply_filters('chc_locate_template', $template, $template_name, $template_path);
+	return apply_filters('halt_locate_template', $template, $template_name, $template_path);
 }

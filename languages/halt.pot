@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Customer Help Center 1.0\n"
-"POT-Creation-Date: 2013-09-12 18:48+0530\n"
-"PO-Revision-Date: 2013-09-12 18:48+0530\n"
+"Project-Id-Version: Halt 1.0\n"
+"POT-Creation-Date: 2013-09-13 05:16+0530\n"
+"PO-Revision-Date: 2013-09-13 05:16+0530\n"
 "Last-Translator: Ram Ratan Maurya <support@codestag.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../customer-help-center.php:83 ../customer-help-center.php:95
+#: ../halt.php:88 ../halt.php:100
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
@@ -152,7 +152,7 @@ msgid "New KB Tag"
 msgstr ""
 
 #: ../includes/custom-post-types.php:107
-#: ../includes/admin/settings/settings.php:35
+#: ../includes/admin/settings/settings.php:36
 msgid "Knowledgebase"
 msgstr ""
 
@@ -161,15 +161,15 @@ msgid "Knowledgebases"
 msgstr ""
 
 #: ../includes/admin/admin-pages.php:20
-msgid "Custom Help Center Settins"
+msgid "Halt Settins"
 msgstr ""
 
 #: ../includes/admin/admin-pages.php:20
-msgid "Help Center"
+msgid "Halt"
 msgstr ""
 
 #: ../includes/admin/admin-pages.php:21
-msgid "Customer Help Center System Info"
+msgid "Halt System Info"
 msgstr ""
 
 #: ../includes/admin/admin-pages.php:21
@@ -177,11 +177,11 @@ msgid "System Info"
 msgstr ""
 
 #: ../includes/admin/dashboard-widgets.php:23
-msgid "Customer Help Center Right now"
+msgid "Halt Right now"
 msgstr ""
 
 #: ../includes/admin/dashboard-widgets.php:39
-msgid "Help Center Stats"
+msgid "Halt Stats"
 msgstr ""
 
 #: ../includes/admin/dashboard-widgets.php:44
@@ -198,19 +198,19 @@ msgstr ""
 
 #: ../includes/admin/welcome.php:53 ../includes/admin/welcome.php:54
 #: ../includes/admin/welcome.php:62 ../includes/admin/welcome.php:63
-msgid "Welcome to Customer Help Center"
+msgid "Welcome to Halt"
 msgstr ""
 
 #: ../includes/admin/welcome.php:126 ../includes/admin/welcome.php:170
 #, php-format
-msgid "Welcome to Customer Help Center %s"
+msgid "Welcome to Halt %s"
 msgstr ""
 
 #: ../includes/admin/welcome.php:127 ../includes/admin/welcome.php:171
 #, php-format
 msgid ""
-"Thank you for using Customer Help Center %s it's ready to help your "
-"customers in a better way!"
+"Thank you for using Halt %s it's ready to help your customers in a better "
+"way!"
 msgstr ""
 
 #: ../includes/admin/welcome.php:128 ../includes/admin/welcome.php:172
@@ -253,9 +253,8 @@ msgstr ""
 
 #: ../includes/admin/welcome.php:182
 msgid ""
-"Customer Help Center is created by a worldwide team of developers who aim to "
-"provide the #1 eCommerce platform for selling digital goods through "
-"WordPress."
+"Halt is created with an aim to provide the #1 customer portal for your users "
+"through WordPress."
 msgstr ""
 
 #: ../includes/admin/settings/contextual-help.php:26
@@ -264,9 +263,7 @@ msgstr ""
 
 #: ../includes/admin/settings/contextual-help.php:27
 #, php-format
-msgid ""
-"Visit the <a href=\"%s\">documentation</a> on the Easy Digital Downloads "
-"website."
+msgid "Visit the <a href=\"%s\">documentation</a> on the Halt website."
 msgstr ""
 
 #: ../includes/admin/settings/contextual-help.php:29
@@ -277,7 +274,7 @@ msgid ""
 msgstr ""
 
 #: ../includes/admin/settings/contextual-help.php:39
-#: ../includes/admin/settings/settings.php:34
+#: ../includes/admin/settings/settings.php:35
 msgid "General"
 msgstr ""
 

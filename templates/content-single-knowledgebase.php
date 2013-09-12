@@ -2,10 +2,10 @@
 /**
  * The template for displaying knowledgebase content in the single-knowledgebase.php template
  *
- * Override this template by copying it to yourtheme/chc/content-single-knowledgebase.php
+ * Override this template by copying it to yourtheme/halt/content-single-knowledgebase.php
  *
  * @author 		Ram Ratan Maurya
- * @package 	CHC/Templates
+ * @package 	Halt/Templates
  * @version     1.0
  */
 
@@ -14,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <?php
 	/**
-	 * chc_before_single_knowledgebase hook
+	 * halt_before_single_knowledgebase hook
 	 *
 	 */
-	 do_action( 'chc_before_single_knowledgebase' );
+	 do_action( 'halt_before_single_knowledgebase' );
 ?>
 
 <article id="kb-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -34,4 +34,4 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 </article><!-- #kb-<?php the_ID(); ?> -->
 
-<?php do_action( 'chc_after_single_knowledgebase' ); ?>
+<?php do_action( 'halt_after_single_knowledgebase' ); ?>

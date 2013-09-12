@@ -2,11 +2,11 @@
 /**
  * The Template for displaying all single knowledgebase.
  * 
- * Override this template by copying it to yourtheme/chc/single-knowledgebase.php
+ * Override this template by copying it to yourtheme/halt/single-knowledgebase.php
  * 
- * @package 	CHC/Templates
+ * @package 	Halt/Templates
  * @since 		1.0
- * @copyright   Copyright (c) 2013, Ram Ratan Maurya
+ * @author 		Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -17,31 +17,31 @@ get_header('knowledgebase'); ?>
 
 	<?php
 		/**
-		 * chc_knowledgebase_before_main_content hook
+		 * halt_knowledgebase_before_main_content hook
 		 */
-		do_action('chc_knowledgebase_before_main_content');
+		do_action('halt_knowledgebase_before_main_content');
 	?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php chc_get_template_part( 'content', 'single-knowledgebase' ); ?>
+			<?php halt_get_template_part( 'content', 'single-knowledgebase' ); ?>
 
 		<?php endwhile; // end of the loop. ?>
 
 	<?php
 		/**
-		 * chc_knowledgebase_after_main_content hook
+		 * halt_knowledgebase_after_main_content hook
 		 *
 		 */
-		do_action('chc_knowledgebase_after_main_content');
+		do_action('halt_knowledgebase_after_main_content');
 	?>
 
 	<?php
 		/**
-		 * chc_knowledgebase_sidebar hook
+		 * halt_knowledgebase_sidebar hook
 		 *
 		 */
-		do_action('chc_knowledgebase_sidebar');
+		do_action('halt_knowledgebase_sidebar');
 	?>
 
 <?php get_footer('knowledgebase'); ?>

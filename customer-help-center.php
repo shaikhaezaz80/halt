@@ -20,7 +20,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Customer Help Center. If not, see <http://www.gnu.org/licenses/>.
+ * along with Customer Help Center. If not, 	see <http://www.gnu.org/licenses/>.
  *
  * @package CHC
  * @category Core
@@ -48,13 +48,18 @@ final class Customer_Help_Center {
 	private static $instance;
 
 	public function __construct() {
+		
 		// Auto-load classes on demand
 		if ( function_exists( "__autoload" ) ) {
 			spl_autoload_register( "__autoload" );
     	}
 		spl_autoload_register( array( $this, 'autoload' ) );
 		
+		// Hooks
 		add_action( 'init', array( $this, 'init' ), 0 );
+
+		// Loaded action
+		do_action( 'chc_loaded' );
 	}
 
 	public static function instance() {
@@ -124,7 +129,19 @@ final class Customer_Help_Center {
 	public function autoload( $class ) {
 		$class = strtolower( $class );
 
+		if( strpos( $class, 'chc_' ) === 0 ) {
+
+			$path = CHC_PLUGIN_DIR . 'includes/classes/';
+			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
+
+			if ( is_readable( $path . $file ) ) {
+				include_once( $path . $file );
+				return;
+			}
+		}
+
 		if( strpos( $class, 'chc_shortcode_' ) === 0 ) {
+			
 			$path = CHC_PLUGIN_DIR . 'includes/shortcodes/';
 			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
 			

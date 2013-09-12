@@ -29,7 +29,8 @@ function chc_options_page() {
 
 	ob_start(); ?>
 
-	<div class="wrap">
+	<div class="wrap help-center">
+		<div class="icon32 icon-dashboard" id="icon-woocommerce"><br /></div>
 		<h2 class="nav-tab-wrapper">
 			<a href="<?php echo add_query_arg('tab', 'general', remove_query_arg('settings-updated')); ?>" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>"><?php _e('General', 'chc'); ?></a>
 			<a href="<?php echo add_query_arg('tab', 'knowledgebase', remove_query_arg('settings-updated')); ?>" class="nav-tab <?php echo $active_tab == 'knowledgebase' ? 'nav-tab-active' : ''; ?>"><?php _e('Knowledgebase', 'chc'); ?></a>

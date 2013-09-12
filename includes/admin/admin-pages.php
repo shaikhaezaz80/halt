@@ -21,4 +21,4 @@ function chc_add_options_link() {
 	$chc_system_info = add_submenu_page( 'chc-settings', __( 'Customer Help Center System Info', 'chc' ), __( 'System Info', 'chc' ), 'install_plugins', 'chc-system-info', 'chc_system_info' );
 }
 
-add_action( 'admin_menu', 'chc_add_options_link', 10 );
+add_action( 'admin_menu', 'chc_add_options_link', 9 );

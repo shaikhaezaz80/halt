@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Halt
  * Plugin URI: http://halt.io
- * Description: Changing the way you handle your customers
+ * Description: Changing the way you assist your customers
  * Author: Ram Ratan Maurya
  * Author URI: http://mauryaratan.me
  * Version: 0.1
@@ -296,14 +296,14 @@ final class Halt {
 		$find = array( 'halt.php' );
 		$file = '';
 
-		if ( is_single() && get_post_type() == 'knowledgebase' ) {
+		if ( is_single() && get_post_type() == 'article' ) {
 
 
-			$file 	= 'single-knowledgebase.php';
+			$file 	= 'single-article.php';
 			$find[] = $file;
 			$find[] = TEMPLATE_URL . $file;
 
-		} elseif ( is_tax( 'knowledgebase_category' ) || is_tax( 'knowledgebase_tags' ) ) {
+		} elseif ( is_tax( 'article_cat' ) || is_tax( 'article_tag' ) ) {
 
 			$term = get_queried_object();
 			$file 		= 'taxonomy-' . $term->taxonomy . '.php';
@@ -312,9 +312,9 @@ final class Halt {
 			$find[] 	= $file;
 			$find[] 	= TEMPLATE_URL . $file;
 
-		} elseif ( is_post_type_archive( 'knowledgebase' ) ) {
+		} elseif ( is_post_type_archive( 'article' ) ) {
 
-			$file 	= 'archive-knowledgebase.php';
+			$file 	= 'archive-article.php';
 			$find[] = $file;
 			$find[] = TEMPLATE_URL . $file;
 

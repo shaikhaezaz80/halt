@@ -4,11 +4,11 @@ if( ! function_exists('halt_post_types_init') ) :
 
 function halt_post_types_init() {
 	
-	$archives = defined( 'HALT_KB_DISABLE_ARCHIVE' ) && HALT_KB_DISABLE_ARCHIVE ? false : true;
-	$slug     = defined( 'HALT_KB_SLUG' ) ? HALT_KB_SLUG : 'knowledgebase';
-	$rewrite  = defined( 'HALT_KB_DISABLE_REWRITE' ) && HALT_KB_DISABLE_REWRITE ? false : array('slug' => $slug, 'with_front' => false);
+	$archives = defined( 'HALT_ARTICLE_DISABLE_ARCHIVE' ) && HALT_ARTICLE_DISABLE_ARCHIVE ? false : true;
+	$slug     = defined( 'HALT_ARTICLE_SLUG' ) ? HALT_ARTICLE_SLUG : 'article';
+	$rewrite  = defined( 'HALT_ARTICLE_DISABLE_REWRITE' ) && HALT_ARTICLE_DISABLE_REWRITE ? false : array('slug' => $slug, 'with_front' => false);
 
-	$knowledgebase_labels =  apply_filters( 'halt_knowledgebase_labels', array(
+	$article_labels =  apply_filters( 'halt_article_labels', array(
 		'name' 				=> '%2$s',
 		'singular_name' 	=> '%1$s',
 		'add_new' 			=> __( 'Add New', 'halt' ),
@@ -24,12 +24,12 @@ function halt_post_types_init() {
 		'menu_name' 		=> __( '%2$s', 'halt' )
 	) );
 
-	foreach ( $knowledgebase_labels as $key => $value ) {
-	   $knowledgebase_labels[ $key ] = sprintf( $value, halt_get_label_singular(), halt_get_label_plural() );
+	foreach ( $article_labels as $key => $value ) {
+	   $article_labels[ $key ] = sprintf( $value, halt_get_label_singular(), halt_get_label_plural() );
 	}
 
-	$knowledgebase_args = array(
-		'labels' 			=> $knowledgebase_labels,
+	$article_args = array(
+		'labels' 			=> $article_labels,
 		'public' 			=> true,
 		'publicly_queryable'=> true,
 		'show_ui' 			=> true,
@@ -40,52 +40,52 @@ function halt_post_types_init() {
 		'map_meta_cap'      => true,
 		'has_archive' 		=> $archives,
 		'hierarchical' 		=> false,
-		'supports' 			=> apply_filters( 'halt_knowledgebase_supports', array( 'title', 'editor', 'thumbnail' ) ),
+		'supports' 			=> apply_filters( 'halt_article_supports', array( 'title', 'editor', 'thumbnail' ) ),
 	);
 
-	register_post_type( 'knowledgebase', apply_filters( 'halt_knowledgebase_post_type_args', $knowledgebase_args ) );
+	register_post_type( 'article', apply_filters( 'halt_article_post_type_args', $article_args ) );
 
-	register_taxonomy( 'knowledgebase_category',
-	    array('knowledgebase'),
+	register_taxonomy( 'article_cat',
+	    array('article'),
 	    array(
 	        'hierarchical' => true,
 	        'labels' => array(
-	                'name' => __( 'KB Category', 'halt'),
-	                'singular_name' => __( 'KB Categories', 'halt'),
-	                'search_items' =>  __( 'Search KB Categories', 'halt'),
-	                'all_items' => __( 'All KB Categories', 'halt'),
-	                'parent_item' => __( 'Parent KB Category', 'halt'),
-	                'parent_item_colon' => __( 'Parent KB Category:', 'halt'),
-	                'edit_item' => __( 'Edit KB Category', 'halt'),
-	                'update_item' => __( 'Update KB Category', 'halt'),
-	                'add_new_item' => __( 'Add New KB Category', 'halt'),
-	                'new_item_name' => __( 'New KB Category', 'halt')
+	                'name' => __( 'Article Category', 'halt'),
+	                'singular_name' => __( 'Article Categories', 'halt'),
+	                'search_items' =>  __( 'Search Article Categories', 'halt'),
+	                'all_items' => __( 'All Article Categories', 'halt'),
+	                'parent_item' => __( 'Parent Article Category', 'halt'),
+	                'parent_item_colon' => __( 'Parent Article Category:', 'halt'),
+	                'edit_item' => __( 'Edit Article Category', 'halt'),
+	                'update_item' => __( 'Update Article Category', 'halt'),
+	                'add_new_item' => __( 'Add New Article Category', 'halt'),
+	                'new_item_name' => __( 'New Article Category', 'halt')
 	        ),
 	        'show_ui' => true,
 	        'query_var' => true,
-	        'rewrite' => array( 'slug' => 'knowledgebase-category' ),
+	        'rewrite' => array( 'slug' => 'article-category' ),
 	    )
 	);
 
-	register_taxonomy( 'knowledgebase_tag',
-	    array('knowledgebase'),
+	register_taxonomy( 'article_tag',
+	    array('article'),
 	    array(
 	        'hierarchical' => false,
 	        'labels' => array(
-	                'name' => __( 'KB Tag', 'halt'),
-	                'singular_name' => __( 'KB Tags', 'halt'),
-	                'search_items' =>  __( 'Search KB Tags', 'halt'),
-	                'all_items' => __( 'All KB Tags', 'halt'),
-	                'parent_item' => __( 'Parent KB Tag', 'halt'),
-	                'parent_item_colon' => __( 'Parent KB Tag:', 'halt'),
-	                'edit_item' => __( 'Edit KB Tag', 'halt'),
-	                'update_item' => __( 'Update KB Tag', 'halt'),
-	                'add_new_item' => __( 'Add New KB Tag', 'halt'),
-	                'new_item_name' => __( 'New KB Tag', 'halt')
+	                'name' => __( 'Article Tag', 'halt'),
+	                'singular_name' => __( 'Article Tags', 'halt'),
+	                'search_items' =>  __( 'Search Article Tags', 'halt'),
+	                'all_items' => __( 'All Article Tags', 'halt'),
+	                'parent_item' => __( 'Parent Article Tag', 'halt'),
+	                'parent_item_colon' => __( 'Parent Article Tag:', 'halt'),
+	                'edit_item' => __( 'Edit Article Tag', 'halt'),
+	                'update_item' => __( 'Update Article Tag', 'halt'),
+	                'add_new_item' => __( 'Add New Article Tag', 'halt'),
+	                'new_item_name' => __( 'New Article Tag', 'halt')
 	        ),
 	        'show_ui' => true,
 	        'query_var' => true,
-	        'rewrite' => array( 'slug' => 'knowledgebase-tags' ),
+	        'rewrite' => array( 'slug' => 'article-tags' ),
 	    )
 	);
 
@@ -102,12 +102,12 @@ add_action( 'init', 'halt_post_types_init', 1 );
  * @since 1.0
  * @return array $defaults Default labels
  */
-function halt_get_default_knowledgebase_labels() {
+function halt_get_default_article_labels() {
 	$defaults = array(
-	   'singular' => __( 'Knowledgebase', 'halt' ),
-	   'plural' => __( 'Knowledgebases', 'halt')
+	   'singular' => __( 'Article', 'halt' ),
+	   'plural' => __( 'Articles', 'halt')
 	);
-	return apply_filters( 'halt_default_knowledgebase_name', $defaults );
+	return apply_filters( 'halt_default_article_name', $defaults );
 }
 
 /**
@@ -117,7 +117,7 @@ function halt_get_default_knowledgebase_labels() {
  * @return string $defaults['singular'] Singular label
  */
 function halt_get_label_singular( $lowercase = false ) {
-	$defaults = halt_get_default_knowledgebase_labels();
+	$defaults = halt_get_default_article_labels();
 	return ($lowercase) ? strtolower( $defaults['singular'] ) : $defaults['singular'];
 }
 
@@ -128,6 +128,6 @@ function halt_get_label_singular( $lowercase = false ) {
  * @return string $defaults['plural'] Plural label
  */
 function halt_get_label_plural( $lowercase = false ) {
-	$defaults = halt_get_default_knowledgebase_labels();
+	$defaults = halt_get_default_article_labels();
 	return ( $lowercase ) ? strtolower( $defaults['plural'] ) : $defaults['plural'];
 }

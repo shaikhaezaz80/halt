@@ -7,7 +7,7 @@ Halt
 
 
 Plugin Features ( frontend ) :
-- Knowledgebase
+- Articles
 - Community
 - Customer Portal
 - Themes ( v2 )

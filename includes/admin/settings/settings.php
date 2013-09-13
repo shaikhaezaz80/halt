@@ -33,7 +33,7 @@ function halt_options_page() {
 		<div class="icon32 icon-dashboard" id="icon-halt"><br /></div>
 		<h2 class="nav-tab-wrapper">
 			<a href="<?php echo add_query_arg('tab', 'general', remove_query_arg('settings-updated')); ?>" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>"><?php _e('General', 'halt'); ?></a>
-			<a href="<?php echo add_query_arg('tab', 'knowledgebase', remove_query_arg('settings-updated')); ?>" class="nav-tab <?php echo $active_tab == 'knowledgebase' ? 'nav-tab-active' : ''; ?>"><?php _e('Knowledgebase', 'halt'); ?></a>
+			<a href="<?php echo add_query_arg('tab', 'article', remove_query_arg('settings-updated')); ?>" class="nav-tab <?php echo $active_tab == 'article' ? 'nav-tab-active' : ''; ?>"><?php _e('Article', 'halt'); ?></a>
 		</h2>
 
 		<div id="tab_container">
@@ -42,9 +42,9 @@ function halt_options_page() {
 				if( $active_tab == 'general' ) {
 					settings_fields( 'halt_settings_general' );
 					do_settings_sections( 'halt_settings_general' );
-				} elseif ( $active_tab == 'knowledgebase' ) {
-					settings_fields( 'halt_settings_knowledgebase' );
-					do_settings_sections( 'halt_settings_knowledgebase' );
+				} elseif ( $active_tab == 'article' ) {
+					settings_fields( 'halt_settings_article' );
+					do_settings_sections( 'halt_settings_article' );
 				}
 
 				submit_button();

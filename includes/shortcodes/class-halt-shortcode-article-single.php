@@ -1,15 +1,15 @@
 <?php
 /**
- * Knowledgebase Shortcode
+ * Article Shortcode
  *
  *
  * @author 		Ram Ratan Maurya
  * @category 	Shortcodes
  * @package 	Halt/Shortcodes
- * @version     0.1
+ * @since     1.0
  */
-class Halt_Shortcode_Knowledgebase_Single {
+class Halt_Shortcode_Article_Single {
 	public static function output( $atts ) {
-		echo 'Knowledgebase Single Shortcode';
+		echo 'Article Single Shortcode';
 	}
 }

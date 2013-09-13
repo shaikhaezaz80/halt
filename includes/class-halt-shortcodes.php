@@ -13,12 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Halt_Shortcodes {
 	public function __construct() {
-		add_shortcode( 'halt_knowledgebase', array( $this, 'knowledgebase_single' ) );
+		add_shortcode( 'halt_article', array( $this, 'article_single' ) );
 	}
 
-	public function knowledgebase_single( $atts ) {
+	public function article_single( $atts ) {
 		global $halt;
-		return $halt->shortcode_wrapper( array( 'Halt_Shortcode_Knowledgebase_Single', 'output' ), $atts );
+		return $halt->shortcode_wrapper( array( 'Halt_Shortcode_Article_Single', 'output' ), $atts );
 	}
 
 }

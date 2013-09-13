@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Halt 1.0\n"
-"POT-Creation-Date: 2013-09-13 05:16+0530\n"
-"PO-Revision-Date: 2013-09-13 05:16+0530\n"
+"POT-Creation-Date: 2013-09-13 07:32+0530\n"
+"PO-Revision-Date: 2013-09-13 07:32+0530\n"
 "Last-Translator: Ram Ratan Maurya <support@codestag.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -72,92 +72,95 @@ msgid "%2$s"
 msgstr ""
 
 #: ../includes/custom-post-types.php:53
-msgid "KB Category"
+#: ../includes/admin/dashboard-widgets.php:56
+msgid "Article Category"
 msgstr ""
 
 #: ../includes/custom-post-types.php:54
-msgid "KB Categories"
+msgid "Article Categories"
 msgstr ""
 
 #: ../includes/custom-post-types.php:55
-msgid "Search KB Categories"
+msgid "Search Article Categories"
 msgstr ""
 
 #: ../includes/custom-post-types.php:56
-msgid "All KB Categories"
+msgid "All Article Categories"
 msgstr ""
 
 #: ../includes/custom-post-types.php:57
-msgid "Parent KB Category"
+msgid "Parent Article Category"
 msgstr ""
 
 #: ../includes/custom-post-types.php:58
-msgid "Parent KB Category:"
+msgid "Parent Article Category:"
 msgstr ""
 
 #: ../includes/custom-post-types.php:59
-msgid "Edit KB Category"
+msgid "Edit Article Category"
 msgstr ""
 
 #: ../includes/custom-post-types.php:60
-msgid "Update KB Category"
+msgid "Update Article Category"
 msgstr ""
 
 #: ../includes/custom-post-types.php:61
-msgid "Add New KB Category"
+msgid "Add New Article Category"
 msgstr ""
 
 #: ../includes/custom-post-types.php:62
-msgid "New KB Category"
+msgid "New Article Category"
 msgstr ""
 
 #: ../includes/custom-post-types.php:75
-msgid "KB Tag"
+#: ../includes/admin/dashboard-widgets.php:69
+msgid "Article Tag"
 msgstr ""
 
 #: ../includes/custom-post-types.php:76
-msgid "KB Tags"
+msgid "Article Tags"
 msgstr ""
 
 #: ../includes/custom-post-types.php:77
-msgid "Search KB Tags"
+msgid "Search Article Tags"
 msgstr ""
 
 #: ../includes/custom-post-types.php:78
-msgid "All KB Tags"
+msgid "All Article Tags"
 msgstr ""
 
 #: ../includes/custom-post-types.php:79
-msgid "Parent KB Tag"
+msgid "Parent Article Tag"
 msgstr ""
 
 #: ../includes/custom-post-types.php:80
-msgid "Parent KB Tag:"
+msgid "Parent Article Tag:"
 msgstr ""
 
 #: ../includes/custom-post-types.php:81
-msgid "Edit KB Tag"
+msgid "Edit Article Tag"
 msgstr ""
 
 #: ../includes/custom-post-types.php:82
-msgid "Update KB Tag"
+msgid "Update Article Tag"
 msgstr ""
 
 #: ../includes/custom-post-types.php:83
-msgid "Add New KB Tag"
+msgid "Add New Article Tag"
 msgstr ""
 
 #: ../includes/custom-post-types.php:84
-msgid "New KB Tag"
+msgid "New Article Tag"
 msgstr ""
 
 #: ../includes/custom-post-types.php:107
+#: ../includes/admin/dashboard-widgets.php:44
 #: ../includes/admin/settings/settings.php:36
-msgid "Knowledgebase"
+msgid "Article"
 msgstr ""
 
 #: ../includes/custom-post-types.php:108
-msgid "Knowledgebases"
+msgid "Articles"
 msgstr ""
 
 #: ../includes/admin/admin-pages.php:20
@@ -182,18 +185,6 @@ msgstr ""
 
 #: ../includes/admin/dashboard-widgets.php:39
 msgid "Halt Stats"
-msgstr ""
-
-#: ../includes/admin/dashboard-widgets.php:44
-msgid "Knowledgebase Article"
-msgstr ""
-
-#: ../includes/admin/dashboard-widgets.php:56
-msgid "Knowledgebase Category"
-msgstr ""
-
-#: ../includes/admin/dashboard-widgets.php:69
-msgid "Knowledgebase Tag"
 msgstr ""
 
 #: ../includes/admin/welcome.php:53 ../includes/admin/welcome.php:54
@@ -285,11 +276,11 @@ msgid ""
 msgstr ""
 
 #: ../includes/admin/settings/register-settings.php:45
-msgid "Knowledgebase Slug"
+msgid "Article Slug"
 msgstr ""
 
 #: ../includes/admin/settings/register-settings.php:46
-msgid "Enter the slug for knowledebase e.g. knowledgebase or article"
+msgid "Enter the slug for article e.g. article or docs"
 msgstr ""
 
 #: ../includes/admin/settings/register-settings.php:65
@@ -297,7 +288,7 @@ msgid "General Settings"
 msgstr ""
 
 #: ../includes/admin/settings/register-settings.php:91
-msgid "Knowledgebase Settings"
+msgid "Article Settings"
 msgstr ""
 
 #: ../includes/admin/settings/register-settings.php:275

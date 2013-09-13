@@ -13,7 +13,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Get template part (for templates like the knowledgebase-loop).
+ * Get template part (for templates like the article-loop).
  *
  * @access public
  * @param mixed $slug
@@ -41,7 +41,7 @@ function halt_get_template_part( $slug, $name = '' ) {
 }
 
 /**
- * Get other templates (e.g. knowledgebase attributes) passing attributes and including the file.
+ * Get other templates (e.g. article attributes) passing attributes and including the file.
  *
  * @access public
  * @param mixed $template_name

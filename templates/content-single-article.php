@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying knowledgebase content in the single-knowledgebase.php template
+ * The template for displaying article content in the single-article.php template
  *
- * Override this template by copying it to yourtheme/halt/content-single-knowledgebase.php
+ * Override this template by copying it to yourtheme/halt/content-single-article.php
  *
  * @author 		Ram Ratan Maurya
  * @package 	Halt/Templates
@@ -14,13 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <?php
 	/**
-	 * halt_before_single_knowledgebase hook
+	 * halt_before_single_article hook
 	 *
 	 */
-	 do_action( 'halt_before_single_knowledgebase' );
+	 do_action( 'halt_before_single_article' );
 ?>
 
-<article id="kb-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="article-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
@@ -32,6 +32,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	</div>
 	<?php endif; ?>
 
-</article><!-- #kb-<?php the_ID(); ?> -->
+</article><!-- #article-<?php the_ID(); ?> -->
 
-<?php do_action( 'halt_after_single_knowledgebase' ); ?>
+<?php do_action( 'halt_after_single_article' ); ?>

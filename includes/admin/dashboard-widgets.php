@@ -29,9 +29,9 @@ add_action('wp_dashboard_setup', 'halt_register_dashboard_widgets', 0 );
 function halt_init_dashboard_widgets() {
 	global $halt_options;
 
-	$kb_count = wp_count_posts( 'knowledgebase' );
-	$kb_cat_count  = wp_count_terms( 'knowledgebase_category' );
-	$kb_tag_count  = wp_count_terms( 'knowledgebase_tags' );
+	$kb_count = wp_count_posts( 'article' );
+	$kb_cat_count  = wp_count_terms( 'article_cat' );
+	$kb_tag_count  = wp_count_terms( 'article_tag' );
 
 	?>
 
@@ -41,39 +41,39 @@ function halt_init_dashboard_widgets() {
 			<tr class="first">
 				<?php
 					$num  = number_format_i18n( $kb_count->publish );
-					$text = _n( 'Knowledgebase Article', 'Knowledgebase Articles', intval( $kb_count->publish ), 'halt' );
-					$link = add_query_arg( array( 'post_type' => 'knowledgebase' ), get_admin_url( null, 'edit.php' ) );
+					$text = _n( 'Article', 'Articles', intval( $kb_count->publish ), 'halt' );
+					$link = add_query_arg( array( 'post_type' => 'article' ), get_admin_url( null, 'edit.php' ) );
 					$num  = '<a href="' . esc_url($link ) . '">' . esc_html( $num )  . '</a>';
 					$text = '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>';
 				?>
-				<td class="first b b-knowledgebase"><?php echo $num; ?></td>
-				<td class="t knowledgebase"><?php echo $text; ?></td>
+				<td class="first b b-article"><?php echo $num; ?></td>
+				<td class="t article"><?php echo $text; ?></td>
 			</tr>
 
 			<tr>
 				<?php
 					$num  = number_format_i18n( $kb_cat_count );
-					$text = _n( 'Knowledgebase Category', 'Knowledgebase Categories', $kb_cat_count, 'halt' );
-					$link = add_query_arg( array( 'taxonomy' => 'knowledgebase_category', 'post_type' => 'knowledgebase' ), get_admin_url( null, 'edit-tags.php' ) );
+					$text = _n( 'Article Category', 'Article Categories', $kb_cat_count, 'halt' );
+					$link = add_query_arg( array( 'taxonomy' => 'article_cat', 'post_type' => 'article' ), get_admin_url( null, 'edit-tags.php' ) );
 					$num  = '<a href="' . esc_url($link ) . '">' . esc_html( $num )  . '</a>';
 					$text = '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>';
 				?>
-				<td class="first b b-knowledgebase_cats"><?php echo $num; ?></td>
-				<td class="t knowledgebase_cats"><?php echo $text; ?></td>
+				<td class="first b b-article_cats"><?php echo $num; ?></td>
+				<td class="t article_cats"><?php echo $text; ?></td>
 			</tr>
 
 			<tr>
 
 				<?php
 					$num  = number_format_i18n( $kb_tag_count );
-					$text = _n( 'Knowledgebase Tag', 'Knowledgebase Tags', $kb_tag_count, 'halt' );
-					$link = add_query_arg( array( 'taxonomy' => 'knowledgebase_tags', 'post_type' => 'knowledgebase' ), get_admin_url( null, 'edit-tags.php' ) );
+					$text = _n( 'Article Tag', 'Article Tags', $kb_tag_count, 'halt' );
+					$link = add_query_arg( array( 'taxonomy' => 'article_tag', 'post_type' => 'article' ), get_admin_url( null, 'edit-tags.php' ) );
 					$num  = '<a href="' . esc_url($link ) . '">' . esc_html( $num )  . '</a>';
 					$text = '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>';
 				?>
 
-				<td class="first b b-knowledgebase_tags"><?php echo $num; ?></td>
-				<td class="t knowledgebase_tags"><?php echo $text; ?></td>
+				<td class="first b b-article_tags"><?php echo $num; ?></td>
+				<td class="t article_tags"><?php echo $text; ?></td>
 			</tr>
 		</table>
 	</div>

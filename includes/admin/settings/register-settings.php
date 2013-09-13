@@ -38,15 +38,15 @@ function halt_register_settings() {
 			array(
 			)
 		),
-		'knowledgebase' => apply_filters( 'halt_settings_knowledgebase',
+		'article' => apply_filters( 'halt_settings_article',
 			array(
-				'knowledgebase_slug' => array(
-					'id' => 'knowledgebase_slug',
-					'name' => __( 'Knowledgebase Slug', 'halt' ),
-					'desc' => __( 'Enter the slug for knowledebase e.g. knowledgebase or article', 'halt' ),
+				'article_slug' => array(
+					'id' => 'article_slug',
+					'name' => __( 'Article Slug', 'halt' ),
+					'desc' => __( 'Enter the slug for article e.g. article or docs', 'halt' ),
 					'type' => 'text',
 					'size' => 'regular',
-					'std' => 'knowledgebase'
+					'std' => 'article'
 				),
 			)
 		),
@@ -56,8 +56,8 @@ function halt_register_settings() {
 		add_option( 'halt_settings_general' );
 	}
 
-	if ( false == get_option( 'halt_settings_knowledgebase' ) ) {
-		add_option( 'halt_settings_knowledgebase' );
+	if ( false == get_option( 'halt_settings_article' ) ) {
+		add_option( 'halt_settings_article' );
 	}
 
 	add_settings_section(
@@ -87,24 +87,24 @@ function halt_register_settings() {
 	}
 
 	add_settings_section(
-		'halt_settings_knowledgebase',
-		__( 'Knowledgebase Settings', 'halt' ),
+		'halt_settings_article',
+		__( 'Article Settings', 'halt' ),
 		'__return_false',
-		'halt_settings_knowledgebase'
+		'halt_settings_article'
 	);
 
-	foreach ( $halt_settings['knowledgebase'] as $option ) {
+	foreach ( $halt_settings['article'] as $option ) {
 		add_settings_field(
-			'halt_settings_knowledgebase[' . $option['id'] . ']',
+			'halt_settings_article[' . $option['id'] . ']',
 			$option['name'],
 			function_exists( 'halt_' . $option['type'] . '_callback' ) ? 'halt_' . $option['type'] . '_callback' : 'halt_missing_callback',
-			'halt_settings_knowledgebase',
-			'halt_settings_knowledgebase',
+			'halt_settings_article',
+			'halt_settings_article',
 			array(
 				'id' => $option['id'],
 				'desc' => $option['desc'],
 				'name' => $option['name'],
-				'section' => 'knowledgebase',
+				'section' => 'article',
 				'size' => isset( $option['size'] ) ? $option['size'] : null,
 				'options' => isset( $option['options'] ) ? $option['options'] : '',
 				'std' => isset( $option['std'] ) ? $option['std'] : ''
@@ -113,7 +113,7 @@ function halt_register_settings() {
 	}
 
 	register_setting( 'halt_settings_general',    'halt_settings_general',    'halt_settings_sanitize' );
-	register_setting( 'halt_settings_knowledgebase',    'halt_settings_knowledgebase',    'halt_settings_sanitize' );
+	register_setting( 'halt_settings_article',    'halt_settings_article',    'halt_settings_sanitize' );
 }
 add_action('admin_init', 'halt_register_settings');
 
@@ -429,7 +429,7 @@ function halt_settings_sanitize( $input ) {
  */
 function halt_get_settings() {
 	$general_settings = is_array( get_option( 'halt_settings_general' ) )    ? get_option( 'halt_settings_general' )  	: array();
-	$knowledgebase_settings = is_array( get_option( 'halt_settings_knowledgebase' ) )   ? get_option( 'halt_settings_knowledgebase' ) 	: array();
+	$article_settings = is_array( get_option( 'halt_settings_article' ) )   ? get_option( 'halt_settings_article' ) 	: array();
 
-	return array_merge( $general_settings, $knowledgebase_settings );
+	return array_merge( $general_settings, $article_settings );
 }

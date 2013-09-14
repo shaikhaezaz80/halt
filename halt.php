@@ -201,6 +201,8 @@ final class Halt {
 		require_once HALT_PLUGIN_DIR . 'includes/template-functions.php';
 		require_once HALT_PLUGIN_DIR . 'includes/ajax-functions.php';
 
+		require_once HALT_PLUGIN_DIR . 'includes/class-halt-shortcodes.php';
+
 		if( is_admin() ) {
 			// Admin includes
 			require_once HALT_PLUGIN_DIR . 'includes/admin/welcome.php';
@@ -210,7 +212,7 @@ final class Halt {
 			require_once HALT_PLUGIN_DIR . 'includes/admin/settings/contextual-help.php';
 		} else {
 			// Front-end includes
-			require_once HALT_PLUGIN_DIR . 'includes/class-halt-shortcodes.php';
+			
 		}
 
 	}

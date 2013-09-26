@@ -195,11 +195,14 @@ final class Halt {
 		$halt_options = halt_get_settings();
 
 		// Both Admin and Frontend includes
+		require_once HALT_PLUGIN_DIR . 'includes/install.php';
 		require_once HALT_PLUGIN_DIR . 'includes/mime-types.php';
 		require_once HALT_PLUGIN_DIR . 'includes/scripts.php';
 		require_once HALT_PLUGIN_DIR . 'includes/custom-post-types.php';
 		require_once HALT_PLUGIN_DIR . 'includes/template-functions.php';
+		require_once HALT_PLUGIN_DIR . 'includes/article-functions.php';
 		require_once HALT_PLUGIN_DIR . 'includes/ajax-functions.php';
+		require_once HALT_PLUGIN_DIR . 'includes/misc-functions.php';
 
 		require_once HALT_PLUGIN_DIR . 'includes/class-halt-shortcodes.php';
 
@@ -268,8 +271,12 @@ final class Halt {
 	){
 		ob_start();
 
-		$before 	= empty( $wrapper['before'] ) ? '<div class="' . $wrapper['class'] . '">' : $wrapper['before'];
-		$after 		= empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
+		$before = $after = '';
+
+		if( is_array( $wrapper ) ) {
+			$before 	= empty( $wrapper['before'] ) ? '<div class="' . $wrapper['class'] . '">' : $wrapper['before'];
+			$after 		= empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
+		}
 
 		echo $before;
 		call_user_func( $function, $atts );

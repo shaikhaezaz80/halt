@@ -36,6 +36,20 @@ function halt_register_settings() {
 	$halt_settings = array(
 		'general' => apply_filters( 'halt_settings_general',
 			array(
+				'tickets_page' => array(
+					'id'      => 'tickets_page',
+					'name'    => __( 'Tickets Page', 'halt' ),
+					'desc'    => __( 'This is the tickets page where all tickets will be listed. The [halt_tickets] short code must be on this page.', 'halt' ),
+					'type'    => 'select',
+					'options' => $pages_options
+				),
+				'profile_page' => array(
+					'id'      => 'profile_page',
+					'name'    => __( 'Profile Page', 'halt' ),
+					'desc'    => __( 'This is the where users can view their profile. The [halt_profile] short code must be on this page.', 'halt' ),
+					'type'    => 'select',
+					'options' => $pages_options
+				),
 			)
 		),
 		'article' => apply_filters( 'halt_settings_article',

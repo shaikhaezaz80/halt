@@ -1,0 +1,42 @@
+/**
+ * Article Styles
+ */
+.article{
+	.updated{
+		font-size: .9em;
+		color: #687078;
+	}
+}
+
+.article-vote{
+	margin: 1em 0;
+	a{
+		display: inline-block;
+		text-align: center;
+		margin-right: 10px;
+		&:active{
+			@include box-shadow(inset 0px 0px 4px #ddd);
+		}
+	}
+	.upvote{
+		color: $success;
+	}
+	.downvote{
+		color: $error;
+	}
+	.hicon{
+		display: inline-block;
+		margin-right: 3px;
+	}
+	p{
+		margin: 0;
+	}
+}
+
+.voted{
+	.upvote,
+	.downvote{
+		color: #cbcbcb;
+		pointer-events: none;
+	}
+}

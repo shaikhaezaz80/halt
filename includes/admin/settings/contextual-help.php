@@ -40,6 +40,12 @@ function my_plugin_help($contextual_help, $screen_id, $screen) {
 			'content'	=> '<p>' . __( 'This screen provides the most basic settings for configuring customer help center.', 'halt' ) . '</p>'
 		) );
 
+		$screen->add_help_tab( array(
+			'id'	    => 'halt-settings-article',
+			'title'	    => __( 'Article', 'halt' ),
+			'content'	=> '<p>' . __( 'This screen provides settings for articles.', 'halt' ) . '</p>'
+		) );
+
 	}
 	
 	return $contextual_help;

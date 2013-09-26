@@ -1,10 +1,10 @@
 <?php
 /**
- * Admin Pages
+ * Halt Admin Pages
  *
  * @package     Halt
  * @subpackage  Admin/Pages
- * @copyright   Copyright (c) 2013, Ram Ratan Maurya
+ * @author 		Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -17,7 +17,7 @@ function halt_add_options_link() {
 
 	require_once 'system-info.php';
 
-	$halt_settings_page = add_menu_page( __( 'Halt Settins', 'halt' ), __( 'Halt', 'halt' ), 'install_plugins', 'halt-settings', 'halt_options_page' );
+	$halt_settings_page = add_menu_page( __( 'Halt Settings', 'halt' ), __( 'Halt', 'halt' ), 'install_plugins', 'halt-settings', 'halt_options_page', false, 3 );
 	$halt_system_info = add_submenu_page( 'halt-settings', __( 'Halt System Info', 'halt' ), __( 'System Info', 'halt' ), 'install_plugins', 'halt-system-info', 'halt_system_info' );
 }
 

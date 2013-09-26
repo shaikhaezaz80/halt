@@ -4,7 +4,7 @@
  *
  * @package     Halt
  * @subpackage  Admin/Welcome
- * @copyright   Copyright (c) 2013, Ram Ratan Maurya
+ * @author   	Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -124,7 +124,7 @@ class Halt_Welcome {
 
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to Halt %s', 'halt' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for using Halt %s it\'s ready to help your customers in a better way!', 'halt' ), $display_version ); ?></div>
+			<div class="about-text"><?php printf( __( 'Thank you for using Halt %s. Halt is ready to assist your customers in an easy and better way!', 'halt' ), $display_version ); ?></div>
 			<div class="halt-badge"><?php printf( __( 'Version %s', 'halt' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
@@ -136,19 +136,39 @@ class Halt_Welcome {
 			</h2>
 
 			<div class="changelog">
-				<h3><?php _e( 'Easy Peasy', 'halt' );?></h3>
+				<h3><?php _e( 'Articles', 'halt' );?></h3>
 
-				<div class="feature-section">
-					<h4><?php _e( 'Prettier, More Versatile Styles', 'halt' );?></h4>
-					<p><?php _e( 'We have completely rewritten the checkout CSS to make it more attractive, more flexible, and more compatible with a wider variety of themes.', 'halt' );?></p>
+				<div class="feature-section col three-col">
+					<div>
+						<h4><?php _e( 'Upvote / Downvote', 'halt' );?></h4>
+						<p><?php _e( 'Let your visitor upvote / downvote your ariticles for better feedback so you can know how useful the article is.', 'halt' );?></p>
+					</div>
 
-					<h4><?php _e( 'Better Checkout Layout', 'halt' );?></h4>
-					<p><?php _e( 'The position of each field on the checkout has been carefully reconsidered to ensure it is in the proper location so as to best create high conversion rates.', 'halt' );?></p>
+					<div>
+						<h4><?php _e( 'Revisions', 'halt' );?></h4>
+						<p><?php _e( 'Easily go back into time using revisions to keep track of what is changed and when. Help you undo / redo your changes to an article.', 'halt' );?></p>
+					</div>
+
+					<div class="last-feature">
+						<h4><?php _e( 'Report', 'halt' );?></h4>
+						<p><?php _e( 'Let your visitors report an article if it is missing something or if it needs an edit.', 'halt' );?></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="changelog">
+				<h3><?php _e( 'Under the Hood', 'stag' ); ?></h3>
+
+				<div class="feature-section col three-col">
+					<div>
+						<h4><?php _e( 'Retina Support', 'stag' ); ?></h4>
+						<p><?php _e( 'Every image and icon used in Halt completely supports high resolution / retina displays.', 'stag' ) ?></p>
+					</div>
 				</div>
 			</div>
 
 			<div class="return-to-dashboard">
-				<a href="#">Go to Settings</a>
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'halt-settings' ), 'admin.php' ) ) ); ?>"><?php _e( 'Go to Halt Settings', 'halt' ); ?></a>
 			</div>
 
 		</div>
@@ -168,7 +188,7 @@ class Halt_Welcome {
 		?>
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to Halt %s', 'halt' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for using Halt %s it\'s ready to help your customers in a better way!', 'halt' ), $display_version ); ?></div>
+			<div class="about-text"><?php printf( __( 'Thank you for using Halt %s. Halt is ready to assist your customers in an easy and better way!', 'halt' ), $display_version ); ?></div>
 			<div class="halt-badge"><?php printf( __( 'Version %s', 'halt' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
@@ -180,8 +200,71 @@ class Halt_Welcome {
 			</h2>
 
 			<p class="about-description"><?php _e( 'Halt is created with an aim to provide the #1 customer portal for your users through WordPress.', 'halt' ); ?></p>
+
+			<?php echo $this->contributors(); ?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Render Contributors List
+	 *
+	 * @since 1.4
+	 * @uses Halt_Welcome::get_contributors()
+	 * @return string $contributor_list HTML formatted list of all the contributors for Halt
+	 */
+	public function contributors() {
+		$contributors = $this->get_contributors();
+
+		if ( empty( $contributors ) )
+			return '';
+
+		$contributor_list = '<ul class="wp-people-group">';
+
+		foreach ( $contributors as $contributor ) {
+			$contributor_list .= '<li class="wp-person">';
+			$contributor_list .= sprintf( '<a href="%s" title="%s">',
+				esc_url( 'https://github.com/' . $contributor->login ),
+				esc_html( sprintf( __( 'View %s', 'halt' ), $contributor->login ) )
+			);
+			$contributor_list .= sprintf( '<img src="%s" width="64" height="64" class="gravatar" alt="%s" />', esc_url( $contributor->avatar_url ), esc_html( $contributor->login ) );
+			$contributor_list .= '</a>';
+			$contributor_list .= sprintf( '<a class="web" href="%s">%s</a>', esc_url( 'https://github.com/' . $contributor->login ), esc_html( $contributor->login ) );
+			$contributor_list .= '</a>';
+			$contributor_list .= '</li>';
+		}
+
+		$contributor_list .= '</ul>';
+
+		return $contributor_list;
+	}
+
+	/**
+	 * Retreive list of contributors from GitHub.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return array $contributors List of contributors
+	 */
+	public function get_contributors() {
+		$contributors = get_transient( 'halt_contributors' );
+
+		if ( false !== $contributors )
+			return $contributors;
+
+		$response = wp_remote_get( 'https://api.github.com/repos/mauryaratan/halt/contributors', array( 'sslverify' => false ) );
+
+		if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) )
+			return array();
+
+		$contributors = json_decode( wp_remote_retrieve_body( $response ) );
+
+		if ( ! is_array( $contributors ) )
+			return array();
+
+		set_transient( 'halt_contributors', $contributors, 3600 );
+
+		return $contributors;
 	}
 
 	/**

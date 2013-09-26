@@ -1,10 +1,10 @@
 <?php
 /**
- * Dashboard Widgets
+ * Halt Dashboard Widgets
  *
  * @package     Halt
  * @subpackage  Admin/Dashboard
- * @copyright   Copyright (c) 2013, Ram Ratan Maurya
+ * @author   	Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
  */
@@ -23,7 +23,7 @@ function halt_register_dashboard_widgets() {
 		wp_add_dashboard_widget( 'halt_dashboard_stats', __('Halt Right now', 'halt'), 'halt_init_dashboard_widgets' );
 	}
 }
-add_action('wp_dashboard_setup', 'halt_register_dashboard_widgets', 0 );
+add_action( 'wp_dashboard_setup', 'halt_register_dashboard_widgets', 0 );
 
 
 function halt_init_dashboard_widgets() {

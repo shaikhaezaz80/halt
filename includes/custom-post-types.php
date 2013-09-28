@@ -209,6 +209,79 @@ function halt_setup_halt_taxonomies() {
 	    )
 	);
 	register_taxonomy_for_object_type( 'ticket_tag', 'ticket' );
+
+	register_taxonomy( 'ticket_priority',
+	    array('ticket'),
+	    array(
+	        'hierarchical' => false,
+	        'labels' => array(
+				'name'              => __( 'Ticket Priorities', 'halt'),
+				'singular_name'     => __( 'Ticket Priority', 'halt'),
+				'search_items'      =>  __( 'Search Ticket Priorities', 'halt'),
+				'all_items'         => __( 'All Ticket Priorities', 'halt'),
+				'parent_item'       => __( 'Parent Ticket Priority', 'halt'),
+				'parent_item_colon' => __( 'Parent Ticket Priority:', 'halt'),
+				'edit_item'         => __( 'Edit Ticket Priority', 'halt'),
+				'update_item'       => __( 'Update Ticket Priority', 'halt'),
+				'add_new_item'      => __( 'Add New Ticket Priority', 'halt'),
+				'new_item_name'     => __( 'New Ticket Priority', 'halt')
+	        ),
+			'show_ui'           => true,
+			'query_var'         => true,
+			'show_in_nav_menus' => false,
+			'rewrite'           => array( 'slug' => 'ticket-priority' ),
+	    )
+	);
+	register_taxonomy_for_object_type( 'ticket_priority', 'ticket' );
+
+	register_taxonomy( 'ticket_status',
+	    array('ticket'),
+	    array(
+	        'hierarchical' => false,
+	        'labels' => array(
+				'name'              => __( 'Ticket Statuses', 'halt'),
+				'singular_name'     => __( 'Ticket Status', 'halt'),
+				'search_items'      =>  __( 'Search Ticket Statuses', 'halt'),
+				'all_items'         => __( 'All Ticket Statuses', 'halt'),
+				'parent_item'       => __( 'Parent Ticket Status', 'halt'),
+				'parent_item_colon' => __( 'Parent Ticket Status:', 'halt'),
+				'edit_item'         => __( 'Edit Ticket Status', 'halt'),
+				'update_item'       => __( 'Update Ticket Status', 'halt'),
+				'add_new_item'      => __( 'Add New Ticket Status', 'halt'),
+				'new_item_name'     => __( 'New Ticket Status', 'halt')
+	        ),
+			'show_ui'           => true,
+			'query_var'         => true,
+			'show_in_nav_menus' => false,
+			'rewrite'           => array( 'slug' => 'ticket-status' ),
+	    )
+	);
+	register_taxonomy_for_object_type( 'ticket_status', 'ticket' );
+
+	register_taxonomy( 'ticket_type',
+	    array('ticket'),
+	    array(
+	        'hierarchical' => false,
+	        'labels' => array(
+				'name'              => __( 'Ticket Types', 'halt'),
+				'singular_name'     => __( 'Ticket Type', 'halt'),
+				'search_items'      =>  __( 'Search Ticket Types', 'halt'),
+				'all_items'         => __( 'All Ticket Types', 'halt'),
+				'parent_item'       => __( 'Parent Ticket Type', 'halt'),
+				'parent_item_colon' => __( 'Parent Ticket Type:', 'halt'),
+				'edit_item'         => __( 'Edit Ticket Type', 'halt'),
+				'update_item'       => __( 'Update Ticket Type', 'halt'),
+				'add_new_item'      => __( 'Add New Ticket Type', 'halt'),
+				'new_item_name'     => __( 'New Ticket Type', 'halt')
+	        ),
+			'show_ui'           => true,
+			'query_var'         => true,
+			'show_in_nav_menus' => false,
+			'rewrite'           => array( 'slug' => 'ticket-type' ),
+	    )
+	);
+	register_taxonomy_for_object_type( 'ticket_type', 'ticket' );
+
 }
 add_action( 'init', 'halt_setup_halt_taxonomies', 0 );
 
@@ -240,6 +313,7 @@ function halt_get_default_article_labels( $post_type ) {
  * Get Singular Label
  *
  * @since 1.0
+ * @param string $post_type Custom Post Type
  * @return string $defaults['singular'] Singular label
  */
 function halt_get_label_singular( $post_type, $lowercase = false ) {
@@ -251,6 +325,7 @@ function halt_get_label_singular( $post_type, $lowercase = false ) {
  * Get Plural Label
  *
  * @since 1.0
+ * @param string $post_type Custom Post Type
  * @return string $defaults['plural'] Plural label
  */
 function halt_get_label_plural( $post_type, $lowercase = false ) {

@@ -369,3 +369,7 @@ $halt = HALT();
 
 // Get HALT Running
 HALT();
+
+
+// Debug
+define('SCRIPT_DEBUG', true);

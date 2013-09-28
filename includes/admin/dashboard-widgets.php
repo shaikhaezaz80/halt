@@ -29,14 +29,14 @@ add_action( 'wp_dashboard_setup', 'halt_register_dashboard_widgets', 0 );
 function halt_init_dashboard_widgets() {
 	global $halt_options;
 
-	$kb_count = wp_count_posts( 'article' );
-	$kb_cat_count  = wp_count_terms( 'article_cat' );
-	$kb_tag_count  = wp_count_terms( 'article_tag' );
+	$kb_count     = wp_count_posts( 'article' );
+	$kb_cat_count = wp_count_terms( 'article_cat' );
+	$kb_tag_count = wp_count_terms( 'article_tag' );
 
 	?>
 
 	<div class="table table_help_content">
-		<p class="sub halt_sub"><?php _e( 'Halt Stats', 'halt' ); ?></p>
+		<p class="sub halt_sub"><?php _e( 'Article Stats', 'halt' ); ?></p>
 		<table>
 			<tr class="first">
 				<?php
@@ -53,7 +53,7 @@ function halt_init_dashboard_widgets() {
 			<tr>
 				<?php
 					$num  = number_format_i18n( $kb_cat_count );
-					$text = _n( 'Article Category', 'Article Categories', $kb_cat_count, 'halt' );
+					$text = _n( 'Category', 'Categories', $kb_cat_count, 'halt' );
 					$link = add_query_arg( array( 'taxonomy' => 'article_cat', 'post_type' => 'article' ), get_admin_url( null, 'edit-tags.php' ) );
 					$num  = '<a href="' . esc_url($link ) . '">' . esc_html( $num )  . '</a>';
 					$text = '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>';
@@ -66,7 +66,7 @@ function halt_init_dashboard_widgets() {
 
 				<?php
 					$num  = number_format_i18n( $kb_tag_count );
-					$text = _n( 'Article Tag', 'Article Tags', $kb_tag_count, 'halt' );
+					$text = _n( 'Tag', 'Tags', $kb_tag_count, 'halt' );
 					$link = add_query_arg( array( 'taxonomy' => 'article_tag', 'post_type' => 'article' ), get_admin_url( null, 'edit-tags.php' ) );
 					$num  = '<a href="' . esc_url($link ) . '">' . esc_html( $num )  . '</a>';
 					$text = '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>';

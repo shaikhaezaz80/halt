@@ -30,6 +30,7 @@ function halt_install() {
 
 	// Setup the custom post types
 	halt_setup_halt_post_types();
+	halt_install_default_taxonomies();
 
 	// Clear the permalinks
 	flush_rewrite_rules();
@@ -57,6 +58,18 @@ function halt_install() {
 				'comment_status' => 'closed'
 			)
 		);
+
+		// Store Page IDs
+		$options = array(
+			'tickets_page' => $ticket,
+			'profile_page' => $profile
+		);
+
+		update_option( 'halt_settings_general', $options );
+		update_option( 'halt_version', HALT_VERSION );
+
+		// Add a temporary option to note that Halt pages have been created
+		set_transient( '_halt_activation_pages', $options, 30 );
 	}
 
 	// Bail if activating from network, or bulk
@@ -67,3 +80,74 @@ function halt_install() {
 	set_transient( '_halt_activation_redirect', true, 30 );
 }
 register_activation_hook( HALT_PLUGIN_FILE, 'halt_install' );
+
+/**
+ * Install default taxonomies for Tickets
+ * 
+ * @return void
+ */
+function halt_install_default_taxonomies() {
+	/** Ticket Priorities */
+	$terms = array( 'low', 'medium', 'high', 'urgent' );
+	$loop  = 1;
+
+	if ( $terms ) {
+		foreach ( $terms as $term ) {
+			if ( ! get_term_by( 'slug', sanitize_title($term), 'ticket_priority' ) ) {
+				wp_insert_term( $term, 'ticket_priority', array( 'description' => $loop ) );
+				$loop++;
+			}
+		}
+	}
+
+	/** Ticket Statuses */
+	$terms = array( 'new', 'open', 'pending', 'closed' );
+	$loop  = 1;
+	if ( $terms ) {
+		foreach ( $terms as $term ) {
+			if ( ! get_term_by( 'slug', sanitize_title($term), 'ticket_status' ) ) {
+				wp_insert_term( $term, 'ticket_status', array( 'description' => $loop ) );
+				$loop++;
+			}
+		}
+	}
+
+	/** Ticket Type */
+	$terms = array( 'question', 'issue', 'suggestion', 'task' );
+	$loop  = 1;
+	if ( $terms ) {
+		foreach ( $terms as $term ) {
+			if ( ! get_term_by( 'slug', sanitize_title($term), 'ticket_type' ) ) {
+				wp_insert_term( $term, 'ticket_type', array( 'description' => $loop ) );
+				$loop++;
+			}
+		}
+	}	
+}
+
+/**
+ * Post-installation
+ *
+ * Runs just after plugin installation and exposes the
+ * 
+ * @uses halt_after_install Hook
+ * @since 1.0
+ * @return void
+ */
+function halt_after_install() {
+
+	if( ! is_admin() )
+		return;
+
+	$activation_pages = get_transient( '_halt_activation_pages' );
+
+	// Exit if not in admin or the transient doesn't exist
+	if ( false === $activation_pages )
+		return;
+
+	// Delete the transient
+	delete_transient( '_halt_activation_pages' );
+
+	do_action( 'halt_after_install', $activation_pages );
+}
+add_action( 'admin_init', 'halt_after_install' );

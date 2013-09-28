@@ -15,5 +15,14 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) exit;
 // Load Halt file
 include_once( 'halt.php' );
 
+global $halt_options;
+
+/** Delete the Plugin Pages */
+if ( isset( $halt_options['tickets_page'] ) )
+	wp_delete_post( $halt_options['tickets_page'], true );
+if ( isset( $halt_options['profile_page'] ) )
+	wp_delete_post( $halt_options['profile_page'], true );
+
 /** Delete all the Plugin Options */
 delete_option( 'halt_settings_general' );
+delete_option( 'halt_settings_article' );

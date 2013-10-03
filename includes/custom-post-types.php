@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return void
  */
 function halt_setup_halt_post_types() {
-	
+
 	$article_archives = defined( 'HALT_ARTICLE_ENABLE_ARCHIVE' ) && HALT_ARTICLE_ENABLE_ARCHIVE ? true : false;
 	$article_slug     = defined( 'HALT_ARTICLE_SLUG' ) ? HALT_ARTICLE_SLUG : 'article';
 	$article_rewrite  = defined( 'HALT_ARTICLE_DISABLE_REWRITE' ) && HALT_ARTICLE_DISABLE_REWRITE ? false : array( 'slug' => $article_slug, 'with_front' => false );
@@ -65,7 +65,7 @@ function halt_setup_halt_post_types() {
 	$ticket_archives = defined( 'HALT_TICKET_ENABLE_ARCHIVE' ) && HALT_TICKET_ENABLE_ARCHIVE ? false : true;
 	$ticket_slug     = defined( 'HALT_TICKET_SLUG' ) ? HALT_TICKET_SLUG : 'ticket';
 	$ticket_rewrite  = defined( 'HALT_TICKET_DISABLE_REWRITE' ) && HALT_TICKET_DISABLE_REWRITE ? false : array( 'slug' => $ticket_slug, 'with_front' => false );
-	
+
 	/** Tickets Post Type */
 	$ticket_labels =  apply_filters( 'halt_ticket_labels', array(
 		'name'               => '%2$s',
@@ -213,7 +213,7 @@ function halt_setup_halt_taxonomies() {
 	register_taxonomy( 'ticket_priority',
 	    array('ticket'),
 	    array(
-	        'hierarchical' => false,
+	        'hierarchical' => true,
 	        'labels' => array(
 				'name'              => __( 'Ticket Priorities', 'halt'),
 				'singular_name'     => __( 'Ticket Priority', 'halt'),
@@ -237,7 +237,7 @@ function halt_setup_halt_taxonomies() {
 	register_taxonomy( 'ticket_status',
 	    array('ticket'),
 	    array(
-	        'hierarchical' => false,
+	        'hierarchical' => true,
 	        'labels' => array(
 				'name'              => __( 'Ticket Statuses', 'halt'),
 				'singular_name'     => __( 'Ticket Status', 'halt'),
@@ -261,7 +261,7 @@ function halt_setup_halt_taxonomies() {
 	register_taxonomy( 'ticket_type',
 	    array('ticket'),
 	    array(
-	        'hierarchical' => false,
+	        'hierarchical' => true,
 	        'labels' => array(
 				'name'              => __( 'Ticket Types', 'halt'),
 				'singular_name'     => __( 'Ticket Type', 'halt'),
@@ -354,3 +354,72 @@ function halt_change_default_title( $title ) {
      return $title;
 }
 add_filter( 'enter_title_here', 'halt_change_default_title' );
+
+/**
+ * Modify ticket columns
+ *
+ * @param  array $old_columns Old columns
+ * @return $columns Return new columns
+ */
+function halt_ticket_columns( $old_columns ) {
+	$columns = array();
+
+	$columns["cb"] = "<input type=\"checkbox\" />";
+	$columns["title"] = __( "Ticket Title", 'halt' );
+	$columns["id"] = __( "Ticket ID", 'halt' );
+	$columns["ticket_status"] = __( "Status", 'halt' );
+	$columns["ticket_priority"] = __( "Priority", 'halt' );
+	$columns["ticket_type"] = __( "Type", 'halt' );
+	$columns["author"] = __( "Submitted by", 'halt' );
+	$columns["comments"] = $old_columns["comments"];
+	$columns["date"] = __( "Date", 'halt' );
+
+	return $columns;
+}
+add_filter( 'manage_edit-ticket_columns', 'halt_ticket_columns' );
+
+/**
+ * Custom post type ticket column
+ * @param array $column
+ * @return void
+ */
+function halt_ticket_custom_columns( $column ) {
+	global $post;
+
+	switch ( $column ) {
+		case 'ticket_status':
+		case 'ticket_priority':
+		case 'ticket_type':
+			if ( ! $terms = get_the_terms( $post->ID, $column ) ) {
+				echo '<span class="na">&ndash;</span>';
+			} else {
+				foreach ( $terms as $term ) {
+					$termlist[] = '<a href="' . admin_url( 'edit.php?post_type=ticket&' . $column . '=' . $term->slug ) . ' ">' . ucfirst( $term->name ) . '</a>';
+				}
+
+				echo implode( ', ', $termlist );
+			}
+			break;
+
+		case 'id':
+			echo '#'. $post->ID;
+			break;
+	}
+}
+add_action( 'manage_ticket_posts_custom_column', 'halt_ticket_custom_columns', 2 );
+
+/**
+ * Create sortable columns
+ *
+ * @param  array $columns
+ * @return array
+ */
+function halt_ticket_sortable_columns( $columns ) {
+	$custom = array(
+		'ticket_status'   => 'ticket_status',
+		'ticket_priority' => 'ticket_priority',
+		'ticket_type'     => 'ticket_type',
+	);
+	return wp_parse_args( $custom, $columns );
+}
+add_filter( 'manage_edit-ticket_sortable_columns', 'halt_ticket_sortable_columns' );

@@ -48,13 +48,13 @@ final class Halt {
 	private static $instance;
 
 	public function __construct() {
-		
+
 		// Auto-load classes on demand
 		if ( function_exists( "__autoload" ) ) {
 			spl_autoload_register( "__autoload" );
     	}
 		spl_autoload_register( array( $this, 'autoload' ) );
-		
+
 		// Hooks
 		add_action( 'init', array( $this, 'init' ), 0 );
 
@@ -141,10 +141,10 @@ final class Halt {
 		}
 
 		if( strpos( $class, 'halt_shortcode_' ) === 0 ) {
-			
+
 			$path = HALT_PLUGIN_DIR . 'includes/shortcodes/';
 			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
-			
+
 			if ( is_readable( $path . $file ) ) {
 				include_once( $path . $file );
 				return;
@@ -215,7 +215,7 @@ final class Halt {
 			require_once HALT_PLUGIN_DIR . 'includes/admin/settings/contextual-help.php';
 		} else {
 			// Front-end includes
-			
+
 		}
 
 	}
@@ -338,7 +338,7 @@ final class Halt {
 	}
 
 	public function body_class( $classes ) {
-		
+
 		$classes[] = 'halt';
 
 		return $classes;

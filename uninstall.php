@@ -26,3 +26,12 @@ if ( isset( $halt_options['profile_page'] ) )
 /** Delete all the Plugin Options */
 delete_option( 'halt_settings_general' );
 delete_option( 'halt_settings_article' );
+
+/** Delete Capabilities */
+HALT()->roles->remove_caps();
+
+/** Delete the Roles */
+$halt_roles = array( 'support_staff' );
+foreach ( $halt_roles as $role ) {
+	remove_role( $role );
+}

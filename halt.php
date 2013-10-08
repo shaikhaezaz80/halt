@@ -5,7 +5,7 @@
  * Description: Changing the way you assist your customers
  * Author: Ram Ratan Maurya
  * Author URI: http://mauryaratan.me
- * Version: 0.1
+ * Version: 0.1-bleeding
  * Text Domain: halt
  * Domain Path: languages
  *
@@ -43,9 +43,16 @@ final class Halt {
 
 	/**
 	 * @var Halt The one true Halt
-	 * @since 1.0
+	 * @since 0.1
 	 */
 	private static $instance;
+
+	/**
+	 * Halt User Roles and Capabilities Object
+	 *
+	 * @var object
+	 */
+	public $roles;
 
 	public function __construct() {
 
@@ -62,19 +69,33 @@ final class Halt {
 		do_action( 'halt_loaded' );
 	}
 
+	/**
+	 * Main Halt Instance
+	 *
+	 * Insures that only one instance of Halt exists in memory at any one
+	 * time. Also prevents needing to define globals all over the place.
+	 *
+	 * @since Halt 0.1
+	 * @staticvar array $instance
+	 * @uses Halt::setup_globals() Setup the globals needed
+	 * @uses Halt::includes() Include the required files
+	 * @uses Halt::setup_actions() Setup the hooks and actions
+	 * @see HALT()
+	 * @return The one true Halt
+	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Halt ) ) {
 			self::$instance = new Halt;
 			self::$instance->setup_constants();
 			self::$instance->includes();
 			self::$instance->load_textdomain();
-
+			self::$instance->roles = new Halt_Roles();
 		}
 		return self::$instance;
 	}
 
 	/**
-	 * Throw error on object clone
+	 * Throw error on object clone.
 	 *
 	 * The whole idea of the singleton design pattern is that there is a single
 	 * object therefore, we don't want the object to be cloned.
@@ -89,7 +110,7 @@ final class Halt {
 	}
 
 	/**
-	 * Disable unserializing of the class
+	 * Disable unserializing of the class.
 	 *
 	 * @since 1.0
 	 * @access protected
@@ -153,7 +174,7 @@ final class Halt {
 	}
 
 	/**
-	 * Setup plugin constants
+	 * Setup plugin constants.
 	 *
 	 * @access private
 	 * @since 1.0
@@ -182,7 +203,7 @@ final class Halt {
 	}
 
 	/**
-	 * Include required files
+	 * Include required files.
 	 *
 	 * @access private
 	 * @since 1.0
@@ -204,6 +225,7 @@ final class Halt {
 		require_once HALT_PLUGIN_DIR . 'includes/ajax-functions.php';
 		require_once HALT_PLUGIN_DIR . 'includes/misc-functions.php';
 
+		require_once HALT_PLUGIN_DIR . 'includes/class-halt-roles.php';
 		require_once HALT_PLUGIN_DIR . 'includes/class-halt-shortcodes.php';
 
 		if( is_admin() ) {
@@ -221,7 +243,7 @@ final class Halt {
 	}
 
 	/**
-	 * Loads the plugin language files
+	 * Loads the plugin language files.
 	 *
 	 * @access public
 	 * @since 1.0
@@ -253,7 +275,7 @@ final class Halt {
 	}
 
 	/**
-	 * Shortcode Wrapper
+	 * Shortcode Wrapper.
 	 *
 	 * @access public
 	 * @param mixed $function
@@ -337,6 +359,12 @@ final class Halt {
 		return $template;
 	}
 
+	/**
+	 * Add Halt body class.
+	 *
+	 * @param  array $classes
+	 * @return array
+	 */
 	public function body_class( $classes ) {
 
 		$classes[] = 'halt';
@@ -355,17 +383,13 @@ endif; // End if class_exists check
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $halt = HALT(); ?>
- *
+ * @example <?php $halt = HALT(); ?>
  * @since 1.0
  * @return object The one true Halt Instance
  */
 function HALT(){
 	return Halt::instance();
 }
-
-global $halt;
-$halt = HALT();
 
 // Get HALT Running
 HALT();

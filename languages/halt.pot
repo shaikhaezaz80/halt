@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Halt 1.0\n"
-"POT-Creation-Date: 2013-09-25 05:19+0530\n"
-"PO-Revision-Date: 2013-09-25 05:19+0530\n"
+"POT-Creation-Date: 2013-10-08 13:23+0530\n"
+"PO-Revision-Date: 2013-10-08 13:23+0530\n"
 "Last-Translator: Ram Ratan Maurya <support@codestag.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,176 +18,448 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../halt.php:88 ../halt.php:100
+#: ../halt.php:109 ../halt.php:121
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: ../includes/article-functions.php:32
+#: ../includes/article-functions.php:29 ../includes/admin/system-info.php:72
 msgid "Yes"
 msgstr ""
 
-#: ../includes/article-functions.php:32
+#: ../includes/article-functions.php:30 ../includes/admin/system-info.php:72
 msgid "No"
 msgstr ""
 
-#: ../includes/article-functions.php:33
+#: ../includes/article-functions.php:31
 msgid "Was this article useful?"
 msgstr ""
 
-#: ../includes/custom-post-types.php:14
+#: ../includes/class-halt-roles.php:37
+msgid "Support Staff"
+msgstr ""
+
+#: ../includes/custom-post-types.php:30 ../includes/custom-post-types.php:73
 msgid "Add New"
 msgstr ""
 
-#: ../includes/custom-post-types.php:15
+#: ../includes/custom-post-types.php:31 ../includes/custom-post-types.php:74
 #, php-format
 msgid "Add New %1$s"
 msgstr ""
 
-#: ../includes/custom-post-types.php:16
+#: ../includes/custom-post-types.php:32 ../includes/custom-post-types.php:75
 #, php-format
 msgid "Edit %1$s"
 msgstr ""
 
-#: ../includes/custom-post-types.php:17
+#: ../includes/custom-post-types.php:33 ../includes/custom-post-types.php:76
 #, php-format
 msgid "New %1$s"
 msgstr ""
 
-#: ../includes/custom-post-types.php:18
+#: ../includes/custom-post-types.php:34 ../includes/custom-post-types.php:77
 #, php-format
 msgid "All %2$s"
 msgstr ""
 
-#: ../includes/custom-post-types.php:19
+#: ../includes/custom-post-types.php:35 ../includes/custom-post-types.php:78
 #, php-format
 msgid "View %1$s"
 msgstr ""
 
-#: ../includes/custom-post-types.php:20
+#: ../includes/custom-post-types.php:36 ../includes/custom-post-types.php:79
 #, php-format
 msgid "Search %2$s"
 msgstr ""
 
-#: ../includes/custom-post-types.php:21
+#: ../includes/custom-post-types.php:37 ../includes/custom-post-types.php:80
 #, php-format
 msgid "No %2$s found"
 msgstr ""
 
-#: ../includes/custom-post-types.php:22
+#: ../includes/custom-post-types.php:38 ../includes/custom-post-types.php:81
 #, php-format
 msgid "No %2$s found in Trash"
 msgstr ""
 
-#: ../includes/custom-post-types.php:24
+#: ../includes/custom-post-types.php:40 ../includes/custom-post-types.php:83
 #, php-format
 msgid "%2$s"
 msgstr ""
 
-#: ../includes/custom-post-types.php:54
+#: ../includes/custom-post-types.php:124
 msgid "Article Categories"
 msgstr ""
 
-#: ../includes/custom-post-types.php:55
-#: ../includes/admin/dashboard-widgets.php:56
+#: ../includes/custom-post-types.php:125
 msgid "Article Category"
 msgstr ""
 
-#: ../includes/custom-post-types.php:56
+#: ../includes/custom-post-types.php:126
 msgid "Search Article Categories"
 msgstr ""
 
-#: ../includes/custom-post-types.php:57
+#: ../includes/custom-post-types.php:127
 msgid "All Article Categories"
 msgstr ""
 
-#: ../includes/custom-post-types.php:58
+#: ../includes/custom-post-types.php:128
 msgid "Parent Article Category"
 msgstr ""
 
-#: ../includes/custom-post-types.php:59
+#: ../includes/custom-post-types.php:129
 msgid "Parent Article Category:"
 msgstr ""
 
-#: ../includes/custom-post-types.php:60
+#: ../includes/custom-post-types.php:130
 msgid "Edit Article Category"
 msgstr ""
 
-#: ../includes/custom-post-types.php:61
+#: ../includes/custom-post-types.php:131
 msgid "Update Article Category"
 msgstr ""
 
-#: ../includes/custom-post-types.php:62
+#: ../includes/custom-post-types.php:132
 msgid "Add New Article Category"
 msgstr ""
 
-#: ../includes/custom-post-types.php:63
+#: ../includes/custom-post-types.php:133
 msgid "New Article Category"
 msgstr ""
 
-#: ../includes/custom-post-types.php:76
+#: ../includes/custom-post-types.php:147
 msgid "Article Tags"
 msgstr ""
 
-#: ../includes/custom-post-types.php:77
-#: ../includes/admin/dashboard-widgets.php:69
+#: ../includes/custom-post-types.php:148
 msgid "Article Tag"
 msgstr ""
 
-#: ../includes/custom-post-types.php:78
+#: ../includes/custom-post-types.php:149
 msgid "Search Article Tags"
 msgstr ""
 
-#: ../includes/custom-post-types.php:79
+#: ../includes/custom-post-types.php:150
 msgid "All Article Tags"
 msgstr ""
 
-#: ../includes/custom-post-types.php:80
+#: ../includes/custom-post-types.php:151
 msgid "Parent Article Tag"
 msgstr ""
 
-#: ../includes/custom-post-types.php:81
+#: ../includes/custom-post-types.php:152
 msgid "Parent Article Tag:"
 msgstr ""
 
-#: ../includes/custom-post-types.php:82
+#: ../includes/custom-post-types.php:153
 msgid "Edit Article Tag"
 msgstr ""
 
-#: ../includes/custom-post-types.php:83
+#: ../includes/custom-post-types.php:154
 msgid "Update Article Tag"
 msgstr ""
 
-#: ../includes/custom-post-types.php:84
+#: ../includes/custom-post-types.php:155
 msgid "Add New Article Tag"
 msgstr ""
 
-#: ../includes/custom-post-types.php:85
+#: ../includes/custom-post-types.php:156
 msgid "New Article Tag"
 msgstr ""
 
-#: ../includes/custom-post-types.php:109
+#: ../includes/custom-post-types.php:171
+msgid "Ticket Categories"
+msgstr ""
+
+#: ../includes/custom-post-types.php:172
+msgid "Ticket Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:173
+msgid "Search Ticket Categories"
+msgstr ""
+
+#: ../includes/custom-post-types.php:174
+msgid "All Ticket Categories"
+msgstr ""
+
+#: ../includes/custom-post-types.php:175
+msgid "Parent Ticket Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:176
+msgid "Parent Ticket Category:"
+msgstr ""
+
+#: ../includes/custom-post-types.php:177
+msgid "Edit Ticket Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:178
+msgid "Update Ticket Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:179
+msgid "Add New Ticket Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:180
+msgid "New Ticket Category"
+msgstr ""
+
+#: ../includes/custom-post-types.php:194
+msgid "Ticket Tags"
+msgstr ""
+
+#: ../includes/custom-post-types.php:195
+msgid "Ticket Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:196
+msgid "Search Ticket Tags"
+msgstr ""
+
+#: ../includes/custom-post-types.php:197
+msgid "All Ticket Tags"
+msgstr ""
+
+#: ../includes/custom-post-types.php:198
+msgid "Parent Ticket Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:199
+msgid "Parent Ticket Tag:"
+msgstr ""
+
+#: ../includes/custom-post-types.php:200
+msgid "Edit Ticket Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:201
+msgid "Update Ticket Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:202
+msgid "Add New Ticket Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:203
+msgid "New Ticket Tag"
+msgstr ""
+
+#: ../includes/custom-post-types.php:218
+msgid "Ticket Priorities"
+msgstr ""
+
+#: ../includes/custom-post-types.php:219
+msgid "Ticket Priority"
+msgstr ""
+
+#: ../includes/custom-post-types.php:220
+msgid "Search Ticket Priorities"
+msgstr ""
+
+#: ../includes/custom-post-types.php:221
+msgid "All Ticket Priorities"
+msgstr ""
+
+#: ../includes/custom-post-types.php:222
+msgid "Parent Ticket Priority"
+msgstr ""
+
+#: ../includes/custom-post-types.php:223
+msgid "Parent Ticket Priority:"
+msgstr ""
+
+#: ../includes/custom-post-types.php:224
+msgid "Edit Ticket Priority"
+msgstr ""
+
+#: ../includes/custom-post-types.php:225
+msgid "Update Ticket Priority"
+msgstr ""
+
+#: ../includes/custom-post-types.php:226
+msgid "Add New Ticket Priority"
+msgstr ""
+
+#: ../includes/custom-post-types.php:227
+msgid "New Ticket Priority"
+msgstr ""
+
+#: ../includes/custom-post-types.php:242
+msgid "Ticket Statuses"
+msgstr ""
+
+#: ../includes/custom-post-types.php:243
+msgid "Ticket Status"
+msgstr ""
+
+#: ../includes/custom-post-types.php:244
+msgid "Search Ticket Statuses"
+msgstr ""
+
+#: ../includes/custom-post-types.php:245
+msgid "All Ticket Statuses"
+msgstr ""
+
+#: ../includes/custom-post-types.php:246
+msgid "Parent Ticket Status"
+msgstr ""
+
+#: ../includes/custom-post-types.php:247
+msgid "Parent Ticket Status:"
+msgstr ""
+
+#: ../includes/custom-post-types.php:248
+msgid "Edit Ticket Status"
+msgstr ""
+
+#: ../includes/custom-post-types.php:249
+msgid "Update Ticket Status"
+msgstr ""
+
+#: ../includes/custom-post-types.php:250
+msgid "Add New Ticket Status"
+msgstr ""
+
+#: ../includes/custom-post-types.php:251
+msgid "New Ticket Status"
+msgstr ""
+
+#: ../includes/custom-post-types.php:266
+msgid "Ticket Types"
+msgstr ""
+
+#: ../includes/custom-post-types.php:267
+msgid "Ticket Type"
+msgstr ""
+
+#: ../includes/custom-post-types.php:268
+msgid "Search Ticket Types"
+msgstr ""
+
+#: ../includes/custom-post-types.php:269
+msgid "All Ticket Types"
+msgstr ""
+
+#: ../includes/custom-post-types.php:270
+msgid "Parent Ticket Type"
+msgstr ""
+
+#: ../includes/custom-post-types.php:271
+msgid "Parent Ticket Type:"
+msgstr ""
+
+#: ../includes/custom-post-types.php:272
+msgid "Edit Ticket Type"
+msgstr ""
+
+#: ../includes/custom-post-types.php:273
+msgid "Update Ticket Type"
+msgstr ""
+
+#: ../includes/custom-post-types.php:274
+msgid "Add New Ticket Type"
+msgstr ""
+
+#: ../includes/custom-post-types.php:275
+msgid "New Ticket Type"
+msgstr ""
+
+#: ../includes/custom-post-types.php:299
 #: ../includes/admin/dashboard-widgets.php:44
+#: ../includes/admin/settings/contextual-help.php:45
 #: ../includes/admin/settings/settings.php:36
 msgid "Article"
 msgstr ""
 
-#: ../includes/custom-post-types.php:110
+#: ../includes/custom-post-types.php:300 ../includes/admin/welcome.php:139
 msgid "Articles"
 msgstr ""
 
-#: ../includes/admin/admin-pages.php:20
+#: ../includes/custom-post-types.php:304
+msgid "Ticket"
+msgstr ""
+
+#: ../includes/custom-post-types.php:305 ../includes/install.php:42
+msgid "Tickets"
+msgstr ""
+
+#: ../includes/custom-post-types.php:348 ../includes/custom-post-types.php:351
+#, php-format
+msgid "Enter %s title here"
+msgstr ""
+
+#: ../includes/custom-post-types.php:368
+msgid "Title"
+msgstr ""
+
+#: ../includes/custom-post-types.php:369
+msgid "Categories"
+msgstr ""
+
+#: ../includes/custom-post-types.php:370
+msgid "Tags"
+msgstr ""
+
+#: ../includes/custom-post-types.php:371
+msgid "Upvotes"
+msgstr ""
+
+#: ../includes/custom-post-types.php:372
+msgid "Downvotes"
+msgstr ""
+
+#: ../includes/custom-post-types.php:373
+msgid "Author"
+msgstr ""
+
+#: ../includes/custom-post-types.php:374 ../includes/custom-post-types.php:446
+msgid "Date"
+msgstr ""
+
+#: ../includes/custom-post-types.php:439
+msgid "Ticket Title"
+msgstr ""
+
+#: ../includes/custom-post-types.php:440
+msgid "Ticket ID"
+msgstr ""
+
+#: ../includes/custom-post-types.php:441
+msgid "Status"
+msgstr ""
+
+#: ../includes/custom-post-types.php:442
+msgid "Priority"
+msgstr ""
+
+#: ../includes/custom-post-types.php:443
+msgid "Type"
+msgstr ""
+
+#: ../includes/custom-post-types.php:444
+msgid "Submitted by"
+msgstr ""
+
+#: ../includes/install.php:53
+msgid "Profile"
+msgstr ""
+
+#: ../includes/admin/admin-pages.php:28
 msgid "Halt Settings"
 msgstr ""
 
-#: ../includes/admin/admin-pages.php:20
+#: ../includes/admin/admin-pages.php:28
 msgid "Halt"
 msgstr ""
 
-#: ../includes/admin/admin-pages.php:21
+#: ../includes/admin/admin-pages.php:29
 msgid "Halt System Info"
 msgstr ""
 
-#: ../includes/admin/admin-pages.php:21
+#: ../includes/admin/admin-pages.php:29
 msgid "System Info"
 msgstr ""
 
@@ -196,7 +468,55 @@ msgid "Halt Right now"
 msgstr ""
 
 #: ../includes/admin/dashboard-widgets.php:39
-msgid "Halt Stats"
+msgid "Article Stats"
+msgstr ""
+
+#: ../includes/admin/dashboard-widgets.php:56
+msgid "Category"
+msgstr ""
+
+#: ../includes/admin/dashboard-widgets.php:69
+msgid "Tag"
+msgstr ""
+
+#: ../includes/admin/system-info.php:44
+msgid "System Information"
+msgstr ""
+
+#: ../includes/admin/system-info.php:49
+msgid "Environment"
+msgstr ""
+
+#: ../includes/admin/system-info.php:55
+msgid "Home URL"
+msgstr ""
+
+#: ../includes/admin/system-info.php:59
+msgid "Site URL"
+msgstr ""
+
+#: ../includes/admin/system-info.php:63
+msgid "WC Version"
+msgstr ""
+
+#: ../includes/admin/system-info.php:67
+msgid "WP Version"
+msgstr ""
+
+#: ../includes/admin/system-info.php:71
+msgid "WP Multisite Enabled"
+msgstr ""
+
+#: ../includes/admin/system-info.php:75
+msgid "Web Server Info"
+msgstr ""
+
+#: ../includes/admin/system-info.php:79
+msgid "PHP Version"
+msgstr ""
+
+#: ../includes/admin/system-info.php:83
+msgid "MySQL Version"
 msgstr ""
 
 #: ../includes/admin/welcome.php:53 ../includes/admin/welcome.php:54
@@ -204,60 +524,88 @@ msgstr ""
 msgid "Welcome to Halt"
 msgstr ""
 
-#: ../includes/admin/welcome.php:126 ../includes/admin/welcome.php:170
+#: ../includes/admin/welcome.php:126 ../includes/admin/welcome.php:190
 #, php-format
 msgid "Welcome to Halt %s"
 msgstr ""
 
-#: ../includes/admin/welcome.php:127 ../includes/admin/welcome.php:171
+#: ../includes/admin/welcome.php:127 ../includes/admin/welcome.php:191
 #, php-format
 msgid ""
-"Thank you for using Halt %s it's ready to help your customers in a better "
-"way!"
+"Thank you for using Halt %s. Halt is ready to assist your customers in an "
+"easy and better way!"
 msgstr ""
 
-#: ../includes/admin/welcome.php:128 ../includes/admin/welcome.php:172
+#: ../includes/admin/welcome.php:128 ../includes/admin/welcome.php:192
 #, php-format
 msgid "Version %s"
 msgstr ""
 
-#: ../includes/admin/welcome.php:132 ../includes/admin/welcome.php:176
+#: ../includes/admin/welcome.php:132 ../includes/admin/welcome.php:196
 msgid "What's New"
 msgstr ""
 
-#: ../includes/admin/welcome.php:134 ../includes/admin/welcome.php:178
+#: ../includes/admin/welcome.php:134 ../includes/admin/welcome.php:198
 msgid "Credits"
 msgstr ""
 
-#: ../includes/admin/welcome.php:139
-msgid "Easy Peasy"
-msgstr ""
-
-#: ../includes/admin/welcome.php:142
-msgid "Prettier, More Versatile Styles"
-msgstr ""
-
 #: ../includes/admin/welcome.php:143
+msgid "Upvote / Downvote"
+msgstr ""
+
+#: ../includes/admin/welcome.php:144
 msgid ""
-"We have completely rewritten the checkout CSS to make it more attractive, "
-"more flexible, and more compatible with a wider variety of themes."
+"Let your visitor upvote / downvote your ariticles for better feedback so you "
+"can know how useful the article is."
 msgstr ""
 
-#: ../includes/admin/welcome.php:145
-msgid "Better Checkout Layout"
+#: ../includes/admin/welcome.php:148
+msgid "Revisions"
 msgstr ""
 
-#: ../includes/admin/welcome.php:146
+#: ../includes/admin/welcome.php:149
 msgid ""
-"The position of each field on the checkout has been carefully reconsidered "
-"to ensure it is in the proper location so as to best create high conversion "
-"rates."
+"Easily go back into time using revisions to keep track of what is changed "
+"and when. Help you undo / redo your changes to an article."
 msgstr ""
 
-#: ../includes/admin/welcome.php:182
+#: ../includes/admin/welcome.php:153
+msgid "Report"
+msgstr ""
+
+#: ../includes/admin/welcome.php:154
+msgid ""
+"Let your visitors report an article if it is missing something or if it "
+"needs an edit."
+msgstr ""
+
+#: ../includes/admin/welcome.php:160
+msgid "Under the Hood"
+msgstr ""
+
+#: ../includes/admin/welcome.php:164
+msgid "Retina Support"
+msgstr ""
+
+#: ../includes/admin/welcome.php:165
+msgid ""
+"Every image and icon used in Halt completely supports high resolution / "
+"retina displays."
+msgstr ""
+
+#: ../includes/admin/welcome.php:171
+msgid "Go to Halt Settings"
+msgstr ""
+
+#: ../includes/admin/welcome.php:202
 msgid ""
 "Halt is created with an aim to provide the #1 customer portal for your users "
 "through WordPress."
+msgstr ""
+
+#: ../includes/admin/welcome.php:228
+#, php-format
+msgid "View %s"
 msgstr ""
 
 #: ../includes/admin/settings/contextual-help.php:26
@@ -287,36 +635,60 @@ msgid ""
 "center."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:45
+#: ../includes/admin/settings/contextual-help.php:46
+msgid "This screen provides settings for articles."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:41
+msgid "Tickets Page"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:42
+msgid ""
+"This is the tickets page where all tickets will be listed. The "
+"[halt_tickets] short code must be on this page."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:48
+msgid "Profile Page"
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:49
+msgid ""
+"This is the where users can view their profile. The [halt_profile] short "
+"code must be on this page."
+msgstr ""
+
+#: ../includes/admin/settings/register-settings.php:59
 msgid "Article Slug"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:46
+#: ../includes/admin/settings/register-settings.php:60
 msgid "Enter the slug for article e.g. article or docs"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:65
+#: ../includes/admin/settings/register-settings.php:79
 msgid "General Settings"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:91
+#: ../includes/admin/settings/register-settings.php:105
 msgid "Article Settings"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:275
+#: ../includes/admin/settings/register-settings.php:289
 #, php-format
 msgid ""
 "The callback function used for the <strong>%s</strong> setting is missing."
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:359
+#: ../includes/admin/settings/register-settings.php:373
 msgid "Upload File"
 msgstr ""
 
-#: ../includes/admin/settings/register-settings.php:418
+#: ../includes/admin/settings/register-settings.php:432
 msgid "Settings Updated"
 msgstr ""
 
-#: ../templates/content-single-article.php:28
+#: ../templates/content-single-article.php:32
 msgid "Last Updated:"
 msgstr ""

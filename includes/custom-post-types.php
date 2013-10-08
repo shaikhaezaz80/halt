@@ -356,6 +356,77 @@ function halt_change_default_title( $title ) {
 add_filter( 'enter_title_here', 'halt_change_default_title' );
 
 /**
+ * Modify Article columns
+ *
+ * @param  array $old_columns Old columns
+ * @return $columns Return new columns
+ */
+function halt_article_columns( $old_columns ) {
+	$columns = array();
+
+	$columns["cb"] = "<input type=\"checkbox\" />";
+	$columns["title"] = __( "Title", 'halt' );
+	$columns["article_cat"] = __( "Categories", 'halt' );
+	$columns["article_tag"] = __( "Tags", 'halt' );
+	$columns["upvotes"] = __( "Upvotes", 'halt' );
+	$columns["downvotes"] = __( "Downvotes", 'halt' );
+	$columns["author"] = __( "Author", 'halt' );
+	$columns["date"] = __( "Date", 'halt' );
+
+	return $columns;
+}
+add_filter( 'manage_edit-article_columns', 'halt_article_columns' );
+
+/**
+ * Custom post type article column.
+ *
+ * @param array $column
+ * @return void
+ */
+function halt_article_custom_columns( $column ) {
+	global $post;
+
+	switch ( $column ) {
+		case 'article_cat':
+		case 'article_tag':
+			if ( ! $terms = get_the_terms( $post->ID, $column ) ) {
+				echo '<span class="na">&ndash;</span>';
+			} else {
+				foreach ( $terms as $term ) {
+					$termlist[] = '<a href="' . esc_url( add_query_arg( $column, $term->slug, admin_url( 'edit.php?post_type=article' ) ) ) . ' ">' . ucfirst( $term->name ) . '</a>';
+				}
+
+				echo implode( ', ', $termlist );
+			}
+			break;
+
+		case 'upvotes':
+			echo (int) get_post_meta( $post->ID, '_article_upvotes', true );
+			break;
+
+		case 'downvotes':
+			echo (int) get_post_meta( $post->ID, '_article_downvotes', true );
+			break;
+	}
+}
+add_action( 'manage_article_posts_custom_column', 'halt_article_custom_columns', 2 );
+
+/**
+ * Create sortable columns
+ *
+ * @param  array $columns
+ * @return array
+ */
+function halt_article_sortable_columns( $columns ) {
+	$custom = array(
+		'upvotes'     => 'upvotes',
+		'downvotes'   => 'downvotes'
+	);
+	return wp_parse_args( $custom, $columns );
+}
+add_filter( 'manage_edit-article_sortable_columns', 'halt_article_sortable_columns' );
+
+/**
  * Modify ticket columns
  *
  * @param  array $old_columns Old columns
@@ -394,7 +465,7 @@ function halt_ticket_custom_columns( $column ) {
 				echo '<span class="na">&ndash;</span>';
 			} else {
 				foreach ( $terms as $term ) {
-					$termlist[] = '<a href="' . admin_url( 'edit.php?post_type=ticket&' . $column . '=' . $term->slug ) . ' ">' . ucfirst( $term->name ) . '</a>';
+					$termlist[] = '<a href="' . esc_url( add_query_arg( $column, $term->slug, admin_url( 'edit.php?post_type=ticket' ) ) ) . ' ">' . ucfirst( $term->name ) . '</a>';
 				}
 
 				echo implode( ', ', $termlist );

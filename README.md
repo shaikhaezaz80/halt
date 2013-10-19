@@ -1,5 +1,5 @@
 Halt
-===========
+===
 
 **Help Desk Software** built on the top of WordPress.
 
@@ -10,6 +10,3 @@ Not just that! You also have full control over reports / charts and staffs to mo
 
 ### When it will be ready?
 **Halt** is still in early stage and there is a lot to be done but hopefully it should see it's first preview by December'13. If you're interested to know more make sure you subscribe to [newsletter](//halt.io) so you can stay notified on our progress.
-
-### Who's behind it?
-**Halt** is being led by [Ram Ratan Maurya](//twitter.com/mauryaratan), a WordPress Guy from India, and founder of [Codestag Themes](//codestag.com).

@@ -409,6 +409,8 @@ function halt_hook_callback( $args ) {
 function halt_settings_sanitize( $input = array() ) {
 	global $halt_options;
 
+	flush_rewrite_rules();
+
 	parse_str( $_POST['_wp_http_referer'], $referrer );
 
 	$output   = array();

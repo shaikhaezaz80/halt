@@ -19,9 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return void
  */
 function halt_setup_halt_post_types() {
+	global $halt_options;
 
+	$article_slug	  = $halt_options['article_slug'];
 	$article_archives = defined( 'HALT_ARTICLE_ENABLE_ARCHIVE' ) && HALT_ARTICLE_ENABLE_ARCHIVE ? true : false;
-	$article_slug     = defined( 'HALT_ARTICLE_SLUG' ) ? HALT_ARTICLE_SLUG : 'article';
 	$article_rewrite  = defined( 'HALT_ARTICLE_DISABLE_REWRITE' ) && HALT_ARTICLE_DISABLE_REWRITE ? false : array( 'slug' => $article_slug, 'with_front' => false );
 
 	$article_labels =  apply_filters( 'halt_article_labels', array(

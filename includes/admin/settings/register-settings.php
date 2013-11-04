@@ -20,6 +20,46 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @return void
 */
 function halt_register_settings() {
+
+	if ( false == get_option( 'halt_settings' ) ) {
+		add_option( 'halt_settings' );
+	}
+
+	foreach ( halt_get_registered_settings() as $tab => $settings ) {
+
+		add_settings_section(
+			'halt_settings_' . $tab,
+			__return_null(),
+			'__return_false',
+			'halt_settings_' . $tab
+		);
+
+		foreach ( $settings as $option ) {
+			add_settings_field(
+				'halt_settings[' . $option['id'] . ']',
+				$option['name'],
+				function_exists( 'halt_' . $option['type'] . '_callback' ) ? 'halt_' . $option['type'] . '_callback' : 'halt_missing_callback',
+				'halt_settings_' . $tab,
+				'halt_settings_' . $tab,
+				array(
+					'id'      => $option['id'],
+					'desc'    => ! empty( $option['desc'] ) ? $option['desc'] : '',
+					'name'    => $option['name'],
+					'section' => $tab,
+					'size'    => isset( $option['size'] ) ? $option['size'] : null,
+					'options' => isset( $option['options'] ) ? $option['options'] : '',
+					'std'     => isset( $option['std'] ) ? $option['std'] : ''
+				)
+			);
+		}
+
+	}
+
+	register_setting( 'halt_settings', 'halt_settings', 'halt_settings_sanitize' );
+}
+add_action('admin_init', 'halt_register_settings');
+
+function halt_get_registered_settings() {
 	$pages = get_pages();
 	$pages_option = array( 0 => '' ); // For Blank Option
 
@@ -55,81 +95,19 @@ function halt_register_settings() {
 		'article' => apply_filters( 'halt_settings_article',
 			array(
 				'article_slug' => array(
-					'id' => 'article_slug',
+					'id'   => 'article_slug',
 					'name' => __( 'Article Slug', 'halt' ),
 					'desc' => __( 'Enter the slug for article e.g. article or docs', 'halt' ),
 					'type' => 'text',
 					'size' => 'regular',
-					'std' => 'article'
+					'std'  => 'article'
 				),
 			)
 		),
 	);
 
-	if ( false == get_option( 'halt_settings_general' ) ) {
-		add_option( 'halt_settings_general' );
-	}
-
-	if ( false == get_option( 'halt_settings_article' ) ) {
-		add_option( 'halt_settings_article' );
-	}
-
-	add_settings_section(
-		'halt_settings_general',
-		__( 'General Settings', 'halt' ),
-		'__return_false',
-		'halt_settings_general'
-	);
-
-	foreach ( $halt_settings['general'] as $option ) {
-		add_settings_field(
-			'halt_settings_general[' . $option['id'] . ']',
-			$option['name'],
-			function_exists( 'halt_' . $option['type'] . '_callback' ) ? 'halt_' . $option['type'] . '_callback' : 'halt_missing_callback',
-			'halt_settings_general',
-			'halt_settings_general',
-			array(
-				'id' => $option['id'],
-				'desc' => $option['desc'],
-				'name' => $option['name'],
-				'section' => 'general',
-				'size' => isset( $option['size'] ) ? $option['size'] : null,
-				'options' => isset( $option['options'] ) ? $option['options'] : '',
-				'std' => isset( $option['std'] ) ? $option['std'] : ''
-			)
-		);
-	}
-
-	add_settings_section(
-		'halt_settings_article',
-		__( 'Article Settings', 'halt' ),
-		'__return_false',
-		'halt_settings_article'
-	);
-
-	foreach ( $halt_settings['article'] as $option ) {
-		add_settings_field(
-			'halt_settings_article[' . $option['id'] . ']',
-			$option['name'],
-			function_exists( 'halt_' . $option['type'] . '_callback' ) ? 'halt_' . $option['type'] . '_callback' : 'halt_missing_callback',
-			'halt_settings_article',
-			'halt_settings_article',
-			array(
-				'id' => $option['id'],
-				'desc' => $option['desc'],
-				'name' => $option['name'],
-				'section' => 'article',
-				'size' => isset( $option['size'] ) ? $option['size'] : null,
-				'options' => isset( $option['options'] ) ? $option['options'] : '',
-				'std' => isset( $option['std'] ) ? $option['std'] : ''
-			)
-		);
-	}
-
-	register_setting( 'halt_settings_general',    'halt_settings_general',    'halt_settings_sanitize' );
-	register_setting( 'halt_settings_article',    'halt_settings_article',    'halt_settings_sanitize' );
+	return $halt_settings;
 }
-add_action('admin_init', 'halt_register_settings');
 
 
 /**
@@ -428,9 +406,53 @@ function halt_hook_callback( $args ) {
  * @param array $input The value inputted in the field
  * @return string $input Sanitizied value
  */
-function halt_settings_sanitize( $input ) {
+function halt_settings_sanitize( $input = array() ) {
+	global $halt_options;
+
+	parse_str( $_POST['_wp_http_referer'], $referrer );
+
+	$output   = array();
+	$settings = halt_get_registered_settings();
+	$tab      = isset( $referrer['tab'] ) ? $referrer['tab'] : 'general';
+
+	$input = apply_filters( 'halt_settings_' . $tab . '_sanitize', $_POST[ 'halt_settings_' . $tab ] );
+
+	// Loop through each setting being saved and pass it through a sanitization filter
+	foreach( $input as $key => $value ) {
+		// Get the setting type (checkbox, select, etc)
+		$type = isset( $settings[ $key ][ 'type' ] ) ? $settings[ $key ][ 'type' ] : false;
+
+		if( $type ) {
+			// Field type specific filter
+			$output[ $key ] = apply_filters( 'halt_settings_sanitize_' . $type, $value, $key );
+		}
+
+		// General filter
+		$output[ $key ] = apply_filters( 'halt_settings_sanitize', $value, $key );
+	}
+
+	// Loop through the whitelist and unset any that are empty for the tab being saved
+	if( ! empty( $settings[ $tab ] ) ) {
+		foreach( $settings[ $tab ] as $key => $value ) {
+
+			// settings used to have numeric keys, now they have keys that match the option ID. This ensures both methods work
+			if( is_numeric( $key ) ) {
+				$key = $value['id'];
+			}
+
+			if( empty( $_POST[ 'halt_settings_' . $tab ][ $key ] ) ) {
+				unset( $halt_options[ $key ] );
+			}
+
+		}
+	}
+
+	// Merge our new settings with the existing
+	$output = array_merge( $halt_options, $output );
+
 	add_settings_error( 'halt-notices', '', __( 'Settings Updated', 'halt' ), 'updated' );
-	return $input;
+
+	return $output;
 }
 
 /**
@@ -442,8 +464,32 @@ function halt_settings_sanitize( $input ) {
  * @return array Merged array of all the Halt settings
  */
 function halt_get_settings() {
-	$general_settings = is_array( get_option( 'halt_settings_general' ) )    ? get_option( 'halt_settings_general' )  	: array();
-	$article_settings = is_array( get_option( 'halt_settings_article' ) )   ? get_option( 'halt_settings_article' ) 	: array();
 
-	return array_merge( $general_settings, $article_settings );
+	$settings = get_option('halt_settings');
+
+	if ( empty( $settings ) ) {
+		$general_settings = is_array( get_option( 'halt_settings_general' ) )    ? get_option( 'halt_settings_general' )  	: array();
+		$article_settings = is_array( get_option( 'halt_settings_article' ) )   ? get_option( 'halt_settings_article' ) 	: array();
+
+		$settings = array_merge( $general_settings, $article_settings );
+
+		update_option( 'halt_settings', $settings );
+	}
+
+	return apply_filters( 'halt_get_settings', $settings );
+}
+
+/**
+ * Retrieve settings tabs.
+ *
+ * @param array $input The field value
+ * @return string $input Sanitizied value
+ */
+function halt_get_settings_tabs() {
+
+	$tabs            = array();
+	$tabs['general'] = __( 'General', 'halt' );
+	$tabs['article'] = __( 'Article', 'halt' );
+
+	return apply_filters( 'halt_settings_tabs', $tabs );
 }

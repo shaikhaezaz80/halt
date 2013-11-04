@@ -64,7 +64,7 @@ function halt_setup_halt_post_types() {
 	register_post_type( 'article', apply_filters( 'halt_article_post_type_args', $article_args ) );
 
 	$ticket_archives = defined( 'HALT_TICKET_ENABLE_ARCHIVE' ) && HALT_TICKET_ENABLE_ARCHIVE ? false : true;
-	$ticket_slug     = defined( 'HALT_TICKET_SLUG' ) ? HALT_TICKET_SLUG : 'ticket';
+	$ticket_slug     = $halt_options['ticket_slug'];
 	$ticket_rewrite  = defined( 'HALT_TICKET_DISABLE_REWRITE' ) && HALT_TICKET_DISABLE_REWRITE ? false : array( 'slug' => $ticket_slug, 'with_front' => false );
 
 	/** Tickets Post Type */

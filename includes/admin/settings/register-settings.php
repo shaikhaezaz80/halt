@@ -102,6 +102,14 @@ function halt_get_registered_settings() {
 					'size' => 'regular',
 					'std'  => 'article'
 				),
+				'ticket_slug' => array(
+					'id'   => 'ticket_slug',
+					'name' => __( 'Ticket Slug', 'halt' ),
+					'desc' => __( 'Enter the slug for ticket e.g. ticket or case', 'halt' ),
+					'type' => 'text',
+					'size' => 'regular',
+					'std'  => 'ticket'
+				),
 			)
 		),
 	);

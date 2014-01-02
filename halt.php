@@ -20,7 +20,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Halt. If not, 	see <http://www.gnu.org/licenses/>.
+ * along with Halt. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package Halt
  * @category Core
@@ -76,7 +76,7 @@ final class Halt {
 	 * time. Also prevents needing to define globals all over the place.
 	 *
 	 * @since Halt 0.1
-	 * @staticvar array $instance
+	 * @static var array $instance
 	 * @uses Halt::setup_globals() Setup the globals needed
 	 * @uses Halt::includes() Include the required files
 	 * @uses Halt::setup_actions() Setup the hooks and actions
@@ -130,7 +130,7 @@ final class Halt {
 	public function init() {
 
 		if ( ! is_admin() || defined('DOING_AJAX') ) {
-			$this->shortcodes = new Halt_Shortcodes();			// Shortcodes class, controls all frontend shortcodes
+			$this->shortcodes = new Halt_Shortcodes();	// Shortcodes class, controls all frontend shortcodes
 
 			add_filter( 'template_include', array( $this, 'template_loader' ) );
 			add_filter( 'body_class', array( $this, 'body_class' ) );
@@ -394,7 +394,6 @@ function HALT(){
 
 // Get HALT Running
 HALT();
-
 
 // Debug
 define('SCRIPT_DEBUG', true);

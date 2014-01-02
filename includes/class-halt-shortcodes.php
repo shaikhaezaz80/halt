@@ -3,7 +3,7 @@
  * Halt_Shortcodes class.
  *
  * @class 		Halt_Shortcodes
- * @version		2.0.0
+ * @version		0.1
  * @package		Halt/Classes
  * @category	Class
  * @author 		Ram Ratan Maurya

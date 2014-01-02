@@ -25,7 +25,7 @@ function halt_add_options_link() {
 
 	require_once 'system-info.php';
 
-	$halt_settings_page = add_menu_page( __( 'Halt Settings', 'halt' ), __( 'Halt', 'halt' ), 'manage_halt', 'halt-settings', 'halt_options_page', false, 3 );
+	$halt_settings_page = add_menu_page( __( 'Halt Settings', 'halt' ), __( 'Halt', 'halt' ), 'manage_halt', 'halt-settings', 'halt_options_page', 'dashicons-shield', 3 );
 	$halt_system_info   = add_submenu_page( 'halt-settings', __( 'Halt System Info', 'halt' ), __( 'System Info', 'halt' ), 'manage_halt', 'halt-system-info', 'halt_system_info' );
 }
 

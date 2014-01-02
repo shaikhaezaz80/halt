@@ -59,6 +59,7 @@ function halt_setup_halt_post_types() {
 		'has_archive'        => $article_archives,
 		'hierarchical'       => false,
 		'menu_icon'          => 'dashicons-book-alt',
+		'menu_position'		=> 32,
 		'supports'           => apply_filters( 'halt_article_supports', array( 'title', 'editor', 'revisions' ) )
 	);
 
@@ -103,6 +104,7 @@ function halt_setup_halt_post_types() {
 		'has_archive'        => $ticket_archives,
 		'hierarchical'       => false,
 		'menu_icon'          => 'dashicons-format-chat',
+		'menu_position'		=> 33,
 		'supports'           => apply_filters( 'halt_ticket_supports', array( 'title', 'editor', 'author', 'comments' ) )
 	);
 

@@ -25,8 +25,35 @@ function halt_add_options_link() {
 
 	require_once 'system-info.php';
 
-	$halt_settings_page = add_menu_page( __( 'Halt Settings', 'halt' ), __( 'Halt', 'halt' ), 'manage_halt', 'halt-settings', 'halt_options_page', 'dashicons-shield', 3 );
+	add_admin_menu_separator(30);
+	add_admin_menu_separator(35);
+
+	$halt_settings_page = add_menu_page( __( 'Halt Settings', 'halt' ), __( 'Halt', 'halt' ), 'manage_halt', 'halt-settings', 'halt_options_page', 'dashicons-shield', 31 );
 	$halt_system_info   = add_submenu_page( 'halt-settings', __( 'Halt System Info', 'halt' ), __( 'System Info', 'halt' ), 'manage_halt', 'halt-system-info', 'halt_system_info' );
 }
 
 add_action( 'admin_menu', 'halt_add_options_link', 9 );
+
+/**
+ * Create Admin Menu Separator
+ *
+ * @param int $position Position of admin menu item
+ * @return void
+ */
+function add_admin_menu_separator( $position ) {
+
+	global $menu;
+	$index = 0;
+
+	foreach ( $menu as $offset => $section ) {
+		if ( substr( $section[2], 0, 9 ) == 'separator' ) {
+		    $index++;
+		}
+		if ( $offset >= $position ) {
+			$menu[$position] = array( '', 'read', "separator{$index}", '', 'wp-menu-separator' );
+			break;
+	    }
+	}
+
+	ksort( $menu );
+}

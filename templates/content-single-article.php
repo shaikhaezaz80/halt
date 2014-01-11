@@ -15,7 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 <?php
 	/**
 	 * halt_before_single_article hook
-	 *
 	 */
 	 do_action( 'halt_before_single_article' );
 ?>
@@ -24,7 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	<header class="entry-header">
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-		
 		<?php
 		if( is_single() ) {
 			echo apply_filters( 'article_updated_date', sprintf( '<time class="updated" datetime="%1$s">%2$s %3$s</time>',
@@ -35,9 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			);
 		}
 		?>
-
 	</header>
-	
+
 	<?php if( is_single() ) : ?>
 	<div class="entry-content">
 		<?php the_content(); ?>
@@ -49,7 +46,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 <?php
 	/**
 	 * halt_after_single_article hook
-	 *
 	 */
 	do_action( 'halt_after_single_article' );
 ?>

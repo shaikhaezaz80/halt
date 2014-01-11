@@ -369,14 +369,14 @@ add_filter( 'enter_title_here', 'halt_change_default_title' );
 function halt_article_columns( $old_columns ) {
 	$columns = array();
 
-	$columns["cb"] = "<input type=\"checkbox\" />";
-	$columns["title"] = __( "Title", 'halt' );
+	$columns["cb"]          = "<input type=\"checkbox\" />";
+	$columns["title"]       = __( "Title", 'halt' );
 	$columns["article_cat"] = __( "Categories", 'halt' );
 	$columns["article_tag"] = __( "Tags", 'halt' );
-	$columns["upvotes"] = __( "Upvotes", 'halt' );
-	$columns["downvotes"] = __( "Downvotes", 'halt' );
-	$columns["author"] = __( "Author", 'halt' );
-	$columns["date"] = __( "Date", 'halt' );
+	$columns["upvotes"]     = __( "Upvotes", 'halt' );
+	$columns["downvotes"]   = __( "Downvotes", 'halt' );
+	$columns["author"]      = __( "Author", 'halt' );
+	$columns["date"]        = __( "Date", 'halt' );
 
 	return $columns;
 }
@@ -424,8 +424,8 @@ add_action( 'manage_article_posts_custom_column', 'halt_article_custom_columns',
  */
 function halt_article_sortable_columns( $columns ) {
 	$custom = array(
-		'upvotes'     => 'upvotes',
-		'downvotes'   => 'downvotes'
+		'upvotes'   => 'upvotes',
+		'downvotes' => 'downvotes'
 	);
 	return wp_parse_args( $custom, $columns );
 }
@@ -440,15 +440,15 @@ add_filter( 'manage_edit-article_sortable_columns', 'halt_article_sortable_colum
 function halt_ticket_columns( $old_columns ) {
 	$columns = array();
 
-	$columns["cb"] = "<input type=\"checkbox\" />";
-	$columns["title"] = __( "Ticket Title", 'halt' );
-	$columns["id"] = __( "Ticket ID", 'halt' );
-	$columns["ticket_status"] = __( "Status", 'halt' );
+	$columns["cb"]              = "<input type=\"checkbox\" />";
+	$columns["id"]              = __( "Ticket ID", 'halt' );
+	$columns["title"]           = __( "Ticket Title", 'halt' );
+	$columns["ticket_status"]   = __( "Status", 'halt' );
 	$columns["ticket_priority"] = __( "Priority", 'halt' );
-	$columns["ticket_type"] = __( "Type", 'halt' );
-	$columns["author"] = __( "Submitted by", 'halt' );
-	$columns["comments"] = $old_columns["comments"];
-	$columns["date"] = __( "Date", 'halt' );
+	$columns["ticket_type"]     = __( "Type", 'halt' );
+	$columns["author"]          = __( "Submitted by", 'halt' );
+	$columns["comments"]        = $old_columns["comments"];
+	$columns["date"]            = __( "Date", 'halt' );
 
 	return $columns;
 }

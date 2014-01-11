@@ -1,23 +1,21 @@
 <?php
 /**
- * Scripts
+ * Scripts.
  *
  * @package     Halt
  * @subpackage  Functions
  * @author 		Ram Ratan Maurya
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       1.0
  */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Load Scripts
+ * Load Scripts.
  *
  * Enqueues the required scripts.
  *
- * @since 1.0
  * @return void
  */
 function halt_load_scripts() {
@@ -29,6 +27,7 @@ function halt_load_scripts() {
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_enqueue_script( 'halt-scripts', $js_dir . 'halt-scripts' . $suffix . '.js', array( 'jquery' ), HALT_VERSION, true );
+
 	wp_localize_script( 'halt-scripts', 'halt_vars', array(
 		'ajaxurl'    => admin_url('admin-ajax.php'),
 		'ajax_nonce' => wp_create_nonce( 'halt_ajax_nonce' )

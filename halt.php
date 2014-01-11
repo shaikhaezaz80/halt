@@ -5,7 +5,7 @@
  * Description: Changing the way you assist your customers
  * Author: Ram Ratan Maurya
  * Author URI: http://mauryaratan.me
- * Version: 0.1-bleeding
+ * Version: 0.1
  * Text Domain: halt
  * Domain Path: languages
  *
@@ -25,7 +25,7 @@
  * @package Halt
  * @category Core
  * @author Ram Ratan Maurya
- * @version 1.0
+ * @version 0.1
  */
 
 // Exit if accessed directly
@@ -36,7 +36,7 @@ if ( ! class_exists( 'Halt' ) ) :
 /**
  * Main Halt Class
  *
- * @since 1.0
+ * @since 0.1
  */
 
 final class Halt {
@@ -100,25 +100,25 @@ final class Halt {
 	 * The whole idea of the singleton design pattern is that there is a single
 	 * object therefore, we don't want the object to be cloned.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 * @access protected
 	 * @return void
 	 */
 	public function __clone() {
 		// Cloning instances of the class is forbidden
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'halt' ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'halt' ), '0.1' );
 	}
 
 	/**
 	 * Disable unserializing of the class.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 * @access protected
 	 * @return void
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'halt' ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'halt' ), '0.1' );
 	}
 
 	/**
@@ -177,7 +177,7 @@ final class Halt {
 	 * Setup plugin constants.
 	 *
 	 * @access private
-	 * @since 1.0
+	 * @since 0.1
 	 * @return void
 	 */
 	private function setup_constants() {
@@ -206,7 +206,7 @@ final class Halt {
 	 * Include required files.
 	 *
 	 * @access private
-	 * @since 1.0
+	 * @since 0.1
 	 * @return void
 	 */
 	private function includes() {
@@ -247,7 +247,7 @@ final class Halt {
 	 * Loads the plugin language files.
 	 *
 	 * @access public
-	 * @since 1.0
+	 * @since 0.1
 	 * @return void
 	 */
 	public function load_textdomain() {
@@ -330,7 +330,6 @@ final class Halt {
 
 		if ( is_single() && get_post_type() == 'article' ) {
 
-
 			$file 	= 'single-article.php';
 			$find[] = $file;
 			$find[] = TEMPLATE_URL . $file;
@@ -370,6 +369,10 @@ final class Halt {
 
 		$classes[] = 'halt';
 
+		if( 'article' == get_post_type() && is_single() ) {
+			$classes[] = 'halt-article';
+		}
+
 		return $classes;
 	}
 }
@@ -385,10 +388,10 @@ endif; // End if class_exists check
  * to declare the global.
  *
  * @example <?php $halt = HALT(); ?>
- * @since 1.0
+ * @since 0.1
  * @return object The one true Halt Instance
  */
-function HALT(){
+function HALT() {
 	return Halt::instance();
 }
 

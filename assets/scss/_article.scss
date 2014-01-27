@@ -14,9 +14,6 @@
 		display: inline-block;
 		text-align: center;
 		margin-right: 10px;
-		&:active{
-			@include box-shadow(inset 0px 0px 4px #ddd);
-		}
 	}
 	.upvote{
 		color: $success;

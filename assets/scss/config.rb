@@ -8,7 +8,6 @@ images_dir = "assets/images"
 javascripts_dir = "assets/js"
 fonts_dir = "assets/fonts"
 
-
 environment = :development
 
 output_style = (environment == :production) ? :compressed : :expanded
@@ -17,10 +16,10 @@ output_style = (environment == :production) ? :compressed : :expanded
 # relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
-# line_comments = true
+line_comments = false
 color_output = false
 
-# sass_options = { :debug_info => true }
+sass_options = { :debug_info => false }
 
 
 # If you prefer the indented syntax, you might want to regenerate this

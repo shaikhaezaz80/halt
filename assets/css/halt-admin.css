@@ -1,4 +1,3 @@
-/* line 5, ../scss/halt-admin.scss */
 #halt_dashboard_stats .halt_sub {
   padding: 5px 0 0px;
   font-size: 11px;
@@ -7,18 +6,15 @@
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-/* line 14, ../scss/halt-admin.scss */
 #halt_dashboard_stats td.b {
   padding-right: 6px;
   text-align: right;
   font-size: 18px;
   width: 1%;
 }
-/* line 20, ../scss/halt-admin.scss */
 #halt_dashboard_stats td.t {
   font-size: 14px;
 }
-/* line 24, ../scss/halt-admin.scss */
 #halt_dashboard_stats td {
   padding: 3px 0;
   white-space: nowrap;

@@ -79,14 +79,14 @@ function halt_get_registered_settings() {
 				'tickets_page' => array(
 					'id'      => 'tickets_page',
 					'name'    => __( 'Tickets Page', 'halt' ),
-					'desc'    => __( 'This is the tickets page where all tickets will be listed. The [halt_tickets] short code must be on this page.', 'halt' ),
+					'desc'    => __( 'This is the tickets page where all tickets will be listed. The <code>[halt_tickets]</code> shortcode must be on this page.', 'halt' ),
 					'type'    => 'select',
 					'options' => $pages_options
 				),
 				'profile_page' => array(
 					'id'      => 'profile_page',
 					'name'    => __( 'Profile Page', 'halt' ),
-					'desc'    => __( 'This is the where users can view their profile. The [halt_profile] short code must be on this page.', 'halt' ),
+					'desc'    => __( 'This is the where users can view their profile. The <code>[halt_profile]</code> shortcode must be on this page.', 'halt' ),
 					'type'    => 'select',
 					'options' => $pages_options
 				),

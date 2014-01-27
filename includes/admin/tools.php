@@ -29,7 +29,7 @@ function stag_tools_page() {
 				<div class="inside">
 					<p><?php _e( 'Export the Halt settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'halt' ); ?></p>
 					<form method="post" action="<?php echo admin_url( 'admin.php?page=halt-tools' ); ?>">
-						<p><input type="hidden" name="halt_action" value="export_settings" /></p>
+						<p><input type="hidden" name="halt-action" value="export_settings" /></p>
 						<p>
 							<?php wp_nonce_field( 'halt_export_nonce', 'halt_export_nonce' ); ?>
 							<?php submit_button( __( 'Export', 'halt' ), 'secondary', 'submit', false ); ?>
@@ -46,7 +46,7 @@ function stag_tools_page() {
 							<input type="file" name="import_file"/>
 						</p>
 						<p>
-							<input type="hidden" name="halt_action" value="import_settings" />
+							<input type="hidden" name="halt-action" value="import_settings" />
 							<?php wp_nonce_field( 'halt_import_nonce', 'halt_import_nonce' ); ?>
 							<?php submit_button( __( 'Import', 'halt' ), 'secondary', 'submit', false ); ?>
 						</p>

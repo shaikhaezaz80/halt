@@ -225,6 +225,7 @@ final class Halt {
 		require_once HALT_PLUGIN_DIR . 'includes/article-functions.php';
 		require_once HALT_PLUGIN_DIR . 'includes/ajax-functions.php';
 		require_once HALT_PLUGIN_DIR . 'includes/misc-functions.php';
+		require_once HALT_PLUGIN_DIR . 'includes/widgets.php';
 
 		require_once HALT_PLUGIN_DIR . 'includes/class-halt-roles.php';
 		require_once HALT_PLUGIN_DIR . 'includes/class-halt-shortcodes.php';

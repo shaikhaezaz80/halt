@@ -47,7 +47,6 @@ add_action( 'wp_enqueue_scripts', 'halt_load_scripts' );
 function halt_register_styles() {
 	global $halt_options;
 	$css_dir = HALT_PLUGIN_URL . 'assets/css/';
-	$js_dir  = HALT_PLUGIN_URL . 'assets/js/';
 
 	if ( isset( $halt_options['disable_styles'] ) ) {
 		return;

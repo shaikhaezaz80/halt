@@ -112,6 +112,16 @@ function halt_get_registered_settings() {
 				),
 			)
 		),
+		'styles' => apply_filters( 'halt_settings_styles',
+			array(
+				'disable_styles' => array(
+					'id'   => 'disable_styles',
+					'name' => __( 'Disable Styles', 'halt' ),
+					'desc' => __( 'Check this to disable all included styling of buttons, and all other elements.', 'halt' ),
+					'type' => 'checkbox'
+				),
+			)
+		)
 	);
 
 	return $halt_settings;
@@ -500,6 +510,7 @@ function halt_get_settings_tabs() {
 	$tabs            = array();
 	$tabs['general'] = __( 'General', 'halt' );
 	$tabs['article'] = __( 'Article', 'halt' );
+	$tabs['styles']  = __( 'Styles', 'halt' );
 
 	return apply_filters( 'halt_settings_tabs', $tabs );
 }

@@ -237,6 +237,7 @@ final class Halt {
 			require_once HALT_PLUGIN_DIR . 'includes/admin/dashboard-widgets.php';
 			require_once HALT_PLUGIN_DIR . 'includes/admin/settings/settings.php';
 			require_once HALT_PLUGIN_DIR . 'includes/admin/settings/contextual-help.php';
+			require_once HALT_PLUGIN_DIR . 'includes/admin/tools.php';
 		} else {
 			// Front-end includes
 

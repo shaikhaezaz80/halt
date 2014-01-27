@@ -216,6 +216,7 @@ final class Halt {
 		$halt_options = halt_get_settings();
 
 		// Both Admin and Frontend includes
+		require_once HALT_PLUGIN_DIR . 'includes/actions.php';
 		require_once HALT_PLUGIN_DIR . 'includes/install.php';
 		require_once HALT_PLUGIN_DIR . 'includes/mime-types.php';
 		require_once HALT_PLUGIN_DIR . 'includes/scripts.php';

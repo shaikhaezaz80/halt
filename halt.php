@@ -233,6 +233,7 @@ final class Halt {
 			// Admin includes
 			require_once HALT_PLUGIN_DIR . 'includes/admin/welcome.php';
 			require_once HALT_PLUGIN_DIR . 'includes/admin/admin-pages.php';
+			require_once HALT_PLUGIN_DIR . 'includes/admin/admin-actions.php';
 			require_once HALT_PLUGIN_DIR . 'includes/admin/admin-notices.php';
 			require_once HALT_PLUGIN_DIR . 'includes/admin/dashboard-widgets.php';
 			require_once HALT_PLUGIN_DIR . 'includes/admin/settings/settings.php';

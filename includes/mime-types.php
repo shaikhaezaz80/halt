@@ -20,6 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function halt_allowed_mime_types( $existing_mimes ) {
 	$existing_mimes['zip']  = 'application/zip';
 	$existing_mimes['psd']  = 'image/photoshop';
+	$existing_mimes['m4r']  = 'audio/aac';
+	$existing_mimes['aif']  = 'audio/x-aiff';
+	$existing_mimes['aiff'] = 'audio/aiff';
+	$existing_mimes['epub'] = 'application/epub+zip';
 
 	return $existing_mimes;
 }

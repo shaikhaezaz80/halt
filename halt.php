@@ -56,12 +56,6 @@ final class Halt {
 
 	public function __construct() {
 
-		// Auto-load classes on demand
-		if ( function_exists( "__autoload" ) ) {
-			spl_autoload_register( "__autoload" );
-    	}
-		spl_autoload_register( array( $this, 'autoload' ) );
-
 		// Hooks
 		add_action( 'init', array( $this, 'init' ), 0 );
 
@@ -130,46 +124,11 @@ final class Halt {
 	public function init() {
 
 		if ( ! is_admin() || defined('DOING_AJAX') ) {
-			$this->shortcodes = new Halt_Shortcodes();	// Shortcodes class, controls all frontend shortcodes
-
 			add_filter( 'template_include', array( $this, 'template_loader' ) );
 			add_filter( 'body_class', array( $this, 'body_class' ) );
 
 			// Init action
 			do_action( 'halt_init' );
-		}
-	}
-
-	/**
-	 * Auto-load Halt classes on demand to reduce memory consumption.
-	 *
-	 * @access public
-	 * @param mixed $class
-	 * @return void
-	 */
-	public function autoload( $class ) {
-		$class = strtolower( $class );
-
-		if( strpos( $class, 'halt_' ) === 0 ) {
-
-			$path = HALT_PLUGIN_DIR . 'includes/classes/';
-			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
-
-			if ( is_readable( $path . $file ) ) {
-				include_once( $path . $file );
-				return;
-			}
-		}
-
-		if( strpos( $class, 'halt_shortcode_' ) === 0 ) {
-
-			$path = HALT_PLUGIN_DIR . 'includes/shortcodes/';
-			$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
-
-			if ( is_readable( $path . $file ) ) {
-				include_once( $path . $file );
-				return;
-			}
 		}
 	}
 
@@ -228,7 +187,6 @@ final class Halt {
 		require_once HALT_PLUGIN_DIR . 'includes/widgets.php';
 
 		require_once HALT_PLUGIN_DIR . 'includes/class-halt-roles.php';
-		require_once HALT_PLUGIN_DIR . 'includes/class-halt-shortcodes.php';
 
 		if( is_admin() ) {
 			// Admin includes
@@ -277,39 +235,6 @@ final class Halt {
 			// Load the default language files
 			load_plugin_textdomain( 'halt', false, $halt_lang_dir );
 		}
-	}
-
-	/**
-	 * Shortcode Wrapper.
-	 *
-	 * @access public
-	 * @param mixed $function
-	 * @param array $atts (default: array())
-	 * @return string
-	 */
-	public function shortcode_wrapper(
-		$function,
-		$atts = array(),
-		$wrapper = array(
-			'class' => 'halt',
-			'before' => null,
-			'after' => null
-		)
-	){
-		ob_start();
-
-		$before = $after = '';
-
-		if( is_array( $wrapper ) ) {
-			$before 	= empty( $wrapper['before'] ) ? '<div class="' . $wrapper['class'] . '">' : $wrapper['before'];
-			$after 		= empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
-		}
-
-		echo $before;
-		call_user_func( $function, $atts );
-		echo $after;
-
-		return ob_get_clean();
 	}
 
 	/**

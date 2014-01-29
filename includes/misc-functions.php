@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @param unknown $data
  * @return array
  */
-function stag_object_to_array( $data ) {
+function halt_object_to_array( $data ) {
 	if ( is_array( $data ) || is_object( $data ) ) {
 		$result = array();
 		foreach ( $data as $key => $value ) {
-			$result[ $key ] = stag_object_to_array( $value );
+			$result[ $key ] = halt_object_to_array( $value );
 		}
 		return $result;
 	}

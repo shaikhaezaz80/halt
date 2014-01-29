@@ -156,12 +156,12 @@ class Halt_Welcome {
 			</div>
 
 			<div class="changelog">
-				<h3><?php _e( 'Under the Hood', 'stag' ); ?></h3>
+				<h3><?php _e( 'Under the Hood', 'halt' ); ?></h3>
 
 				<div class="feature-section col three-col">
 					<div>
-						<h4><?php _e( 'Retina Support', 'stag' ); ?></h4>
-						<p><?php _e( 'Every image and icon used in Halt completely supports high resolution / retina displays.', 'stag' ) ?></p>
+						<h4><?php _e( 'Retina Support', 'halt' ); ?></h4>
+						<p><?php _e( 'Every image and icon used in Halt completely supports high resolution / retina displays.', 'halt' ) ?></p>
 					</div>
 				</div>
 			</div>

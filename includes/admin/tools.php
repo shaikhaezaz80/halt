@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @return void
  */
-function stag_tools_page() {
+function halt_tools_page() {
 ?>
 	<div class="wrap">
 		<?php screen_icon(); ?>

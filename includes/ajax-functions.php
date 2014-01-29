@@ -13,6 +13,12 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) die();
 
+/**
+ * Knowledgebase/Article upvote and downvotes.
+ *
+ * @since 1.0
+ * @return void
+ */
 function halt_article_vote() {
 	if ( isset( $_POST['vote_type'] ) && check_ajax_referer( 'halt_ajax_nonce', 'nonce' ) ) {
 		$vote_type = $_POST['vote_type'];
@@ -24,7 +30,7 @@ function halt_article_vote() {
 			setcookie( 'article_vote_' . $postid , $postid, time() * 20, '/' );
 
 			if ( $vote_type == "positive" ) {
-				
+
 				$upvotes = get_post_meta( $postid, '_article_upvotes', true );
 				update_post_meta( $postid, '_article_upvotes', $upvotes + 1 );
 
@@ -33,14 +39,14 @@ function halt_article_vote() {
 				echo $upvotes;
 
 			} elseif ( $vote_type == "negative" ) {
-				
+
 				$downvotes = get_post_meta( $postid, '_article_downvotes', true );
 				update_post_meta( $postid, '_article_downvotes', $downvotes + 1 );
-				
+
 				// Override to get new value
 				$downvotes = get_post_meta( $postid, '_article_downvotes', true );
 				echo $downvotes;
-				
+
 			}
 		} else {
 			return false;

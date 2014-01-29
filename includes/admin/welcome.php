@@ -78,21 +78,22 @@ class Halt_Welcome {
 		remove_submenu_page( 'index.php', 'halt-credits' );
 
 		// Badge for welcome page
-		$badge_url = HALT_PLUGIN_URL . 'assets/images/halt-badge.png';
+		$badge_url = HALT_PLUGIN_URL . 'assets/img/halt-white.svg';
 		?>
 		<style type="text/css" media="screen">
 		/*<![CDATA[*/
 		.halt-badge {
-			padding-top: 150px;
-			height: 52px;
-			width: 185px;
-			color: #666;
+			padding-top: 120px;
+			height: 40px;
+			width: 150px;
+			color: #878a8d;
 			font-weight: bold;
 			font-size: 14px;
 			text-align: center;
-			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+			/*text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);*/
 			margin: 0 -5px;
-			background: url('<?php echo $badge_url; ?>') no-repeat;
+			background: #131c20 url('<?php echo $badge_url; ?>') no-repeat center 20%;
+			background-size: 80px;
 		}
 
 		.about-wrap .halt-badge {

@@ -496,6 +496,6 @@ function halt_ticket_sortable_columns( $columns ) {
 		'ticket_priority' => 'ticket_priority',
 		'ticket_type'     => 'ticket_type',
 	);
-	return wp_parse_args( $custom, $columns );
+	return wp_parse_args( $columns, $custom );
 }
 add_filter( 'manage_edit-ticket_sortable_columns', 'halt_ticket_sortable_columns' );

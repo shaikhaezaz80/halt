@@ -38,7 +38,6 @@ if ( ! class_exists( 'Halt' ) ) :
  *
  * @since 0.1
  */
-
 final class Halt {
 
 	/**

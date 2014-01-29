@@ -18,6 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return void
  */
 function halt_admin_messages() {
+	global $halt_options;
+
+	if ( isset( $_GET['halt-message'] ) && 'settings-imported' == $_GET['halt-message'] && current_user_can('manage_halt') ) {
+		add_settings_error( 'halt-notices', 'halt-settings-imported', __( 'The settings have been imported.', 'halt' ), 'updated' );
+	}
+
 	settings_errors( 'halt-notices' );
 }
 add_action( 'admin_notices', 'halt_admin_messages' );

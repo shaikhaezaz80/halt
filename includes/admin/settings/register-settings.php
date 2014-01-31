@@ -110,6 +110,12 @@ function halt_get_registered_settings() {
 					'size' => 'regular',
 					'std'  => 'ticket'
 				),
+				'disable_article_voting' => array(
+					'id'   => 'disable_article_voting',
+					'name' => __( 'Disable Voting', 'halt' ),
+					'desc' => __( 'Disable voting on single article pages', 'halt' ),
+					'type' => 'checkbox'
+				),
 				'article_vote_text' => array(
 					'id'   => 'article_vote_text',
 					'name' => __( 'Article Vote Text', 'halt' ),

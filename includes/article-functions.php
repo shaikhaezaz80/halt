@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Article vote
+ *
+ * @global array $halt_options Array of all Halt options.
  * @return void
  */
 function halt_article_votes_output() {
@@ -21,17 +23,25 @@ function halt_article_votes_output() {
 
 	if( ! is_singular('article') ) return;
 
+	// Return if 'Disable Voting' is checked under Settings > Article.
+	if( isset( $halt_options['disable_article_voting'] ) ) return;
+
 	$upvotes   = (int) get_post_meta( get_the_ID(), '_article_upvotes', true );
 	$downvotes = (int) get_post_meta( get_the_ID(), '_article_downvotes', true );
 
 	?>
 	<section class="article-vote <?php if ( isset( $_COOKIE['article_vote_' . get_the_ID()] ) ) echo 'voted'; ?>" data-article-id="<?php echo get_the_ID(); ?>">
-		<p>
-			<a href="#" data-vote-type="positive" title="<?php esc_attr_e( 'Yes', 'halt' ); ?>" class="upvote"><i class="hicon hicon-thumbs-up"></i><span class="count"><?php echo number_format_i18n( $upvotes ); ?></span></a>
-			<a href="#" data-vote-type="negative" title="<?php esc_attr_e( 'No', 'halt' ); ?>" class="downvote"><i class="hicon hicon-thumbs-down"></i><span class="count"><?php echo number_format_i18n( $downvotes ); ?></span></a>
-			<?php echo $halt_options['article_vote_text']; ?>
-		</p>
-	</section>
+		<a href="#" data-vote-type="positive" title="<?php esc_attr_e( 'Yes', 'halt' ); ?>" class="upvote">
+			<i class="hicon hicon-thumbs-up"></i>
+			<span class="count"><?php echo number_format_i18n( $upvotes ); ?></span>
+		</a>
+
+		<a href="#" data-vote-type="negative" title="<?php esc_attr_e( 'No', 'halt' ); ?>" class="downvote">
+			<i class="hicon hicon-thumbs-down"></i>
+			<span class="count"><?php echo number_format_i18n( $downvotes ); ?></span>
+		</a>
+		<?php echo $halt_options['article_vote_text']; ?>
+	</section><!-- .article-vote -->
 	<?php
 }
 add_action( 'halt_after_single_article', 'halt_article_votes_output' );

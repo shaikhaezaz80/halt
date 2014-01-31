@@ -110,6 +110,14 @@ function halt_get_registered_settings() {
 					'size' => 'regular',
 					'std'  => 'ticket'
 				),
+				'article_vote_text' => array(
+					'id'   => 'article_vote_text',
+					'name' => __( 'Article Vote Text', 'halt' ),
+					'desc' => __( 'Enter the text for article vote', 'halt' ),
+					'type' => 'text',
+					'size' => 'regular',
+					'std'  => __( 'Was this article useful?', 'halt' )
+				),
 			)
 		),
 		'styles' => apply_filters( 'halt_settings_styles',

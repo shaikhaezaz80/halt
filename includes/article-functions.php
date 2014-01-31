@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return void
  */
 function halt_article_votes_output() {
+	global $halt_options;
 
 	if( ! is_singular('article') ) return;
 
@@ -28,7 +29,7 @@ function halt_article_votes_output() {
 		<p>
 			<a href="#" data-vote-type="positive" title="<?php esc_attr_e( 'Yes', 'halt' ); ?>" class="upvote"><i class="hicon hicon-thumbs-up"></i><span class="count"><?php echo number_format_i18n( $upvotes ); ?></span></a>
 			<a href="#" data-vote-type="negative" title="<?php esc_attr_e( 'No', 'halt' ); ?>" class="downvote"><i class="hicon hicon-thumbs-down"></i><span class="count"><?php echo number_format_i18n( $downvotes ); ?></span></a>
-			<?php _e( 'Was this article useful?', 'halt' ); ?>
+			<?php echo $halt_options['article_vote_text']; ?>
 		</p>
 	</section>
 	<?php

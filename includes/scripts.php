@@ -76,8 +76,7 @@ function halt_load_admin_scripts( $hook ) {
 	$css_dir = HALT_PLUGIN_URL . 'assets/css/';
 	$js_dir  = HALT_PLUGIN_URL . 'assets/js/';
 
-	// Use minified libraries if SCRIPT_DEBUG is turned off
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+	wp_enqueue_style( 'halt-admin-menu-styles', $css_dir . 'halt-menu.css', HALT_VERSION );
 
 	$halt_pages = array( 'index.php' );
 	$halt_cpt 	= apply_filters( 'halt_load_scripts_for_these_types', array( 'article', 'tickets' ) );
@@ -88,7 +87,7 @@ function halt_load_admin_scripts( $hook ) {
 	if ( is_object( $post ) && ! in_array( $post->post_type, $halt_cpt ) )
 		return;
 
-	wp_enqueue_style( 'halt-admin', $css_dir . 'halt-admin' . $suffix . '.css', HALT_VERSION );
+	wp_enqueue_style( 'halt-admin', $css_dir . 'halt-admin.css', HALT_VERSION );
 
 }
 add_action( 'admin_enqueue_scripts', 'halt_load_admin_scripts', 100 );

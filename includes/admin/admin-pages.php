@@ -29,7 +29,7 @@ function halt_add_options_link() {
 	add_admin_menu_separator(30);
 	add_admin_menu_separator(35);
 
-	$halt_settings_page = add_menu_page( __( 'Halt Settings', 'halt' ), __( 'Halt', 'halt' ), 'manage_halt', 'halt-settings', 'halt_options_page', 'dashicons-shield', 31 );
+	$halt_settings_page = add_menu_page( __( 'Halt Settings', 'halt' ), __( 'Halt', 'halt' ), 'manage_halt', 'halt-settings', 'halt_options_page', null, 31 );
 	$halt_tools_page    = add_submenu_page( 'halt-settings', __( 'Halt Tools', 'halt' ), __( 'Tools', 'halt' ), 'install_plugins', 'halt-tools', 'halt_tools_page' );
 	$halt_system_info   = add_submenu_page( 'halt-settings', __( 'Halt System Info', 'halt' ), __( 'System Info', 'halt' ), 'install_plugins', 'halt-system-info', 'halt_system_info' );
 }

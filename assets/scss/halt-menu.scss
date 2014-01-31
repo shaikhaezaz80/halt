@@ -1,0 +1,16 @@
+@import "fonts";
+
+#adminmenu #toplevel_page_halt-settings .menu-icon-generic div.wp-menu-image:before {
+	font-family: 'Halt' !important;
+	content: "\e600";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

@@ -124,6 +124,14 @@ function halt_get_registered_settings() {
 					'size' => 'regular',
 					'std'  => __( 'Was this article useful?', 'halt' )
 				),
+				'already_voted_text' => array(
+					'id'   => 'already_voted_text',
+					'name' => __( 'Already Voted Text', 'halt' ),
+					'desc' => __( 'Enter the text to display when user has already voted for article', 'halt' ),
+					'type' => 'text',
+					'size' => 'regular',
+					'std'  => __( 'You have already voted!', 'halt' )
+				),
 			)
 		),
 		'styles' => apply_filters( 'halt_settings_styles',

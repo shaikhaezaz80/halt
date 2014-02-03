@@ -79,10 +79,10 @@
   margin-right: 10px;
 }
 .article-vote .upvote {
-  color: #7cc576;
+  color: #5fcf81;
 }
 .article-vote .downvote {
-  color: #f26c4f;
+  color: #ed5a5a;
 }
 .article-vote .hicon {
   display: inline-block;

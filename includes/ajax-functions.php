@@ -21,36 +21,17 @@ if ( ! defined( 'ABSPATH' ) ) die();
  */
 function halt_article_vote() {
 	if ( isset( $_POST['vote_type'] ) && check_ajax_referer( 'halt_ajax_nonce', 'nonce' ) ) {
-		$vote_type = $_POST['vote_type'];
-		$postid    = $_POST['postid'];
 
-		if ( !is_numeric($postid) ) return;
+		// Return, if post ID is not a number
+		if ( ! is_numeric( $_POST['post_id'] ) ) return;
 
-		if ( ! isset( $_COOKIE['article_vote_' . $postid] ) ) {
-			setcookie( 'article_vote_' . $postid , $postid, time() * 20, '/' );
-
-			if ( $vote_type == "positive" ) {
-
-				$upvotes = get_post_meta( $postid, '_article_upvotes', true );
-				update_post_meta( $postid, '_article_upvotes', $upvotes + 1 );
-
-				// Override to get new value
-				$upvotes = get_post_meta( $postid, '_article_upvotes', true );
-				echo $upvotes;
-
-			} elseif ( $vote_type == "negative" ) {
-
-				$downvotes = get_post_meta( $postid, '_article_downvotes', true );
-				update_post_meta( $postid, '_article_downvotes', $downvotes + 1 );
-
-				// Override to get new value
-				$downvotes = get_post_meta( $postid, '_article_downvotes', true );
-				echo $downvotes;
-
-			}
+		if ( halt_add_article_vote( $_POST['user_id'], $_POST['post_id'], $_POST['vote_type'] ) ) {
+			$response = array( 'code' => '1' );
 		} else {
-			return false;
+			$response = array( 'code' => '2' );
 		}
+
+		echo json_encode( $response );
 	}
 
 	die();

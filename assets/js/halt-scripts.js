@@ -73,25 +73,61 @@
 		 * @return void
 		 */
 		function articleVote() {
-			$('[data-article-id]').find('a').on('click', function (e) {
-			    e.preventDefault();
-			    var container   = $(this).closest('.article-vote'),
-			        postid      = parseInt(container.data('article-id')),
-			        type        = $(this).data('vote-type'),
-			        that        = $(this),
-			        data        = {
-			            action: 'halt_article_vote',
-			            nonce: halt_vars.ajax_nonce,
-			            vote_type: type,
-			            postid: postid
-			        };
+			$('[data-article-id]').not('.voted').find('a').on('click', function () {
+			    var $this = $(this),
+			    	clicked = false;
 
-			    if (!container.hasClass('voted')) {
-			        $.post(halt_vars.ajaxurl, data, function (response) {
-			            that.find('.count').text(response);
-			            container.addClass('voted');
-			        });
+			    var container = $this.closest('.article-vote'),
+			    	post_id = container.data('article-id'),
+			    	user_id = container.data('user-id'),
+			    	type = $this.data('vote-type'),
+			    	data = {
+			    		action: 'halt_article_vote',
+			    		post_id: post_id,
+			    		user_id: user_id,
+			    		vote_type: type,
+			    		nonce: halt_vars.ajax_nonce
+			    	};
+
+			    // don't allow the user to love the item more than once
+				if( $this.hasClass('voted') ) {
+					alert(halt_vars.already_voted_text);
+					return false;
+				}
+
+				if (halt_vars.logged_in == 'false' && $.cookie('article-vote-' + post_id)) {
+					alert(halt_vars.already_voted_text);
+					return false;
+				}
+
+			    if( !clicked ) {
+			    	// prevent quick user clicks
+			    	clicked = true;
+			    	$.ajax({
+			    		type: "POST",
+			    		data: data,
+			    		dataType: "json",
+			    		url: halt_vars.ajaxurl,
+			    		success: function( response ) {
+			    			if( parseInt( response.code ) == 1 ) {
+			    				container.addClass('voted');
+			    				var count_wrap = $this.find('.count');
+			    				var count = count_wrap.text();
+			    				count_wrap.text(parseInt(count) + 1);
+			    				if(halt_vars.logged_in == 'false') {
+			    					$.cookie('article-vote-' + post_id, 'yes', { expires: 1 });
+			    				}
+			    			} else {
+								alert(halt_vars.error_message);
+			    			}
+			    			clicked = false;
+			    		}
+			    	}).fail( function(data){
+			    		console.log(data);
+			    	});
 			    }
+
+			    return false;
 			});
 		}
 

@@ -16,9 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * Enqueues the required scripts.
  *
+ * @global array $halt_options Array of all Halt options.
+ *
  * @return void
  */
 function halt_load_scripts() {
+	global $halt_options;
+
 	$js_dir = HALT_PLUGIN_URL . 'assets/js/';
 
 	wp_enqueue_script( 'jquery' );
@@ -29,13 +33,16 @@ function halt_load_scripts() {
 	wp_enqueue_script( 'halt-scripts', $js_dir . 'halt-scripts' . $suffix . '.js', array( 'jquery' ), HALT_VERSION, true );
 	wp_register_script( 'jquery-cookie', $js_dir . 'jquery-cookie/jquery.cookie' . $suffix . '.js', array( 'jquery' ), '1.4.0', true );
 
-	if( is_single() && 'article' == get_post_type() ) {
+	if( is_single() && 'article' == get_post_type() && !is_user_logged_in() ) {
 		wp_enqueue_script( 'jquery-cookie' );
 	}
 
 	wp_localize_script( 'halt-scripts', 'halt_vars', array(
-		'ajaxurl'    => admin_url('admin-ajax.php'),
-		'ajax_nonce' => wp_create_nonce( 'halt_ajax_nonce' )
+		'ajaxurl'            => admin_url('admin-ajax.php'),
+		'ajax_nonce'         => wp_create_nonce( 'halt_ajax_nonce' ),
+		'logged_in'          => is_user_logged_in() ? 'true' : 'false',
+		'error_message'      => __( 'Sorry, there was a problem processing your request.', 'halt' ),
+		'already_voted_text' => ( isset( $halt_options['already_voted_text'] ) ) ? $halt_options['already_voted_text'] : __( 'You have already voted!', 'halt' ),
 	) );
 }
 add_action( 'wp_enqueue_scripts', 'halt_load_scripts' );

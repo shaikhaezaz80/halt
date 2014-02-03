@@ -52,6 +52,9 @@ function halt_options_page() {
 			<form method="post" action="options.php">
 				<table class="form-table">
 				<?php
+				if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'article' && isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == "true" ) {
+					flush_rewrite_rules();
+				}
 				settings_fields( 'halt_settings' );
 				do_settings_fields( 'halt_settings_' . $active_tab, 'halt_settings_' . $active_tab );
 				?>

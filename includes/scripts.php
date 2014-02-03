@@ -27,6 +27,11 @@ function halt_load_scripts() {
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_enqueue_script( 'halt-scripts', $js_dir . 'halt-scripts' . $suffix . '.js', array( 'jquery' ), HALT_VERSION, true );
+	wp_register_script( 'jquery-cookie', $js_dir . 'jquery-cookie/jquery.cookie' . $suffix . '.js', array( 'jquery' ), '1.4.0', true );
+
+	if( is_single() && 'article' == get_post_type() ) {
+		wp_enqueue_script( 'jquery-cookie' );
+	}
 
 	wp_localize_script( 'halt-scripts', 'halt_vars', array(
 		'ajaxurl'    => admin_url('admin-ajax.php'),
@@ -41,24 +46,19 @@ add_action( 'wp_enqueue_scripts', 'halt_load_scripts' );
  * Checks the styles option and hooks the required filter.
  *
  * @since 1.0
- * @global $halt_options
+ * @global $halt_options Array of all Halt Options.
  * @return void
  */
 function halt_register_styles() {
 	global $halt_options;
+
 	$css_dir = HALT_PLUGIN_URL . 'assets/css/';
 
 	if ( isset( $halt_options['disable_styles'] ) ) {
 		return;
 	}
 
-	// Use minified libraries if SCRIPT_DEBUG is turned off
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
-	$file = 'halt' . $suffix . '.css';
-
-	wp_enqueue_style( 'halt-styles', $css_dir . $file, array(), HALT_VERSION );
-
+	wp_enqueue_style( 'halt-styles', $css_dir . 'halt.css', array(), HALT_VERSION );
 }
 add_action( 'wp_enqueue_scripts', 'halt_register_styles' );
 

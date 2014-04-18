@@ -182,6 +182,25 @@ class Halt_Widget extends WP_Widget {
 					<?php
 				break;
 
+				case 'categories':
+					$args = array( 'hide_empty' => 0 );
+
+					if( isset( $setting['taxonomy'] ) ) $args['taxonomy'] = $setting['taxonomy'];
+
+					$categories = get_categories( $args );
+					?>
+					<p>
+						<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting[ 'label' ]; ?></label>
+						<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>">
+							<option value="-1"><?php _e( 'All', 'halt' ); ?></option>
+							<?php foreach( $categories as $cat ) : ?>
+								<option value="<?php echo esc_attr( $cat->term_id ); ?>" <?php selected( $cat->term_id, $value ); ?>><?php echo esc_attr( $cat->name ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</p>
+					<?php
+				break;
+
 				case 'number' :
 					if( ! isset( $setting['step'] ) ) $setting['step'] = '1';
 					if( ! isset( $setting['min'] ) ) $setting['min'] = '1';
